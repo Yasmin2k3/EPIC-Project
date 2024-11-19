@@ -5,7 +5,6 @@ public class Calculator {
 
     // multiplication and division has less precidence than addition and subtraction
     protected int precidence(String op1){
-        int precidence;
         try{
             if (op1.equals("*") || op1.equals("/")){
                 return 2;

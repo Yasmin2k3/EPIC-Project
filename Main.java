@@ -10,4 +10,8 @@ Title?:
 
  */
 public class Main {
+    public static void main(String[] args) {
+        InfixCalculator infThing = new InfixCalculator();
+        infThing.infixToPostfix();
+    }
 }
