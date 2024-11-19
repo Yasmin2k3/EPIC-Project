@@ -1,7 +1,6 @@
 //TODO: Make abstract
 public class Calculator {
     public Calculator(){
-
     }
 
     // multiplication and division has less precidence than addition and subtraction
@@ -24,4 +23,6 @@ public class Calculator {
     protected boolean hasPrecidence(String op1, String op2){
         return (precidence(op1) >= precidence(op2));
     }
+
+    
 }
