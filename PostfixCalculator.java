@@ -25,10 +25,7 @@ public class PostfixCalculator extends Calculator{
                     operatorStack.pop();
                 }
                 else{
-                    System.out.println("Pushed " + operatorStack.peek() + " to expression stack");
                     expressionStack.push(operatorStack.pop());
-                    System.out.println("expression stack: " + expressionStack);
-                    System.out.println("operator stack: " + operatorStack);
                 }
             }
         }catch (EmptyStackException e){
@@ -43,35 +40,26 @@ public class PostfixCalculator extends Calculator{
         Stack<String> expressionStack = new Stack<>();
 
         for(String key: expression){
-            System.out.println("Key: " + key);
             //if current key is an operator or a bracket:
             if(key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")){
                 //push the first operator to stack
                 if(operatorStack.isEmpty()){
                     operatorStack.push(key);
-                    System.out.println("expression stack: " + expressionStack);
                 }
                 //if the stack is not empty, and the current operator has greater or equal precidence: push
                 else if(!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek()) || key.equals("(")){
                     operatorStack.push(key);
-                    System.out.println("expression stack: " + expressionStack);
                 }
                 else if(key.equals(")")){
-                    System.out.println("putting operator stack onto expression stack");
                     popOpStack(expressionStack, operatorStack);
                 }
-                System.out.println("operator stack: " + operatorStack);
             }
             else{
-                System.out.println("Pushed " + key + " to expression stack");
                 expressionStack.push(key);
-                System.out.println("expression stack: " + expressionStack);
-                System.out.println("operator stack: " + operatorStack);
             }
         }
         popOpStack(expressionStack, operatorStack);
 
-        System.out.println("\nFinal Expression: " + expressionStack);
         return expressionStack;
     }
 
@@ -79,14 +67,20 @@ public class PostfixCalculator extends Calculator{
     @Override
     public void calculate(){
         //if postfix expression isnt empty, calculate.
+        //create duplicate temp stack
+        //first expression always will be an operator
+        //if (head is operator):
+        // calculate
         if(!postfixExpression.isEmpty()){
             Object i = postfixExpression.peek();
             if (!(i.equals("+") ||i.equals("-") || i.equals("*") || i.equals("/"))){
                 double a = Double.parseDouble(postfixExpression.pop());
                 double b = Double.parseDouble(postfixExpression.pop());
+                System.out.println(a);
+                System.out.println(b);
             }
             else{
-
+                System.out.println(postfixExpression.peek());
             }
         }
         //a = parse double b = parse double
