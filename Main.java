@@ -9,9 +9,23 @@ Title?:
 
 
  */
+
+import java.util.ArrayList;
+
 public class Main {
+    //some data to test with
+    private static ArrayList<String> buildTest(){
+        String[] tempList = new String[]{"5", "+", "(", "3", "-", "*", "5", ")", "-", "1"};
+        ArrayList<String> tempExpress = new ArrayList<>();
+
+        for (String i: tempList){
+            tempExpress.add(i);
+        }
+
+        return tempExpress;
+    }
+
     public static void main(String[] args) {
-        InfixCalculator infThing = new InfixCalculator();
-        infThing.infixToPostfix();
+        PostfixCalculator infThing = new PostfixCalculator(buildTest());
     }
 }
