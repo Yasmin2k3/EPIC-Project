@@ -5,6 +5,7 @@ import java.util.Stack;
 public class PostfixCalculator extends Calculator{
     ArrayList<String> expression;
     Stack<String> postfixExpression;
+    double result; //TODO: change this to somewhere else
 
     //will need to eventually take parameters:
     //ArrayList<Character> expression
@@ -74,8 +75,22 @@ public class PostfixCalculator extends Calculator{
         return expressionStack;
     }
 
+    //make recursive???
     @Override
     public void calculate(){
+        //if postfix expression isnt empty, calculate.
+        if(!postfixExpression.isEmpty()){
+            Object i = postfixExpression.peek();
+            if (!(i.equals("+") ||i.equals("-") || i.equals("*") || i.equals("/"))){
+                double a = Double.parseDouble(postfixExpression.pop());
+                double b = Double.parseDouble(postfixExpression.pop());
+            }
+            else{
+
+            }
+        }
+        //a = parse double b = parse double
+        //operate (operator, a, b)
     }
 }
 
