@@ -1,6 +1,7 @@
 public class InfixCalculator extends Calculator{
     @Override
-    public void calculate(){
+    public double calculate(){
 
+        return 0;
     }
 }

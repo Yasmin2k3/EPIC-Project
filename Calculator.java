@@ -29,16 +29,20 @@ public abstract class Calculator {
         double res = 0;
         switch (op){
             case("+"):
-                res = a + b;
+                res = a+b;
+                break;
             case("-"):
                 res = a-b;
+                break;
             case("*"):
                 res = a*b;
+                break;
             case("/"):
                 res = a/b;
+                break;
         }
         return res;
     }
 
-    public abstract void calculate();
+    public abstract double calculate();
 }

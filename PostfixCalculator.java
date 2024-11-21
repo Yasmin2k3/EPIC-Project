@@ -1,10 +1,11 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class PostfixCalculator extends Calculator{
     ArrayList<String> expression;
-    Stack<String> postfixExpression;
+    ArrayList<String> postfixExpression;
     double result; //TODO: change this to somewhere else
 
     //will need to eventually take parameters:
@@ -35,7 +36,7 @@ public class PostfixCalculator extends Calculator{
     }
 
     //converts infix expression to postfix
-    private Stack<String> infixToPostfix(){
+    private ArrayList<String> infixToPostfix(){
         Stack<String> operatorStack = new Stack<>();
         Stack<String> expressionStack = new Stack<>();
 
@@ -60,31 +61,26 @@ public class PostfixCalculator extends Calculator{
         }
         popOpStack(expressionStack, operatorStack);
 
-        return expressionStack;
+        return new ArrayList(expressionStack);
     }
 
-    //make recursive???
     @Override
-    public void calculate(){
-        //if postfix expression isnt empty, calculate.
-        //create duplicate temp stack
-        //first expression always will be an operator
-        //if (head is operator):
-        // calculate
-        if(!postfixExpression.isEmpty()){
-            Object i = postfixExpression.peek();
-            if (!(i.equals("+") ||i.equals("-") || i.equals("*") || i.equals("/"))){
-                double a = Double.parseDouble(postfixExpression.pop());
-                double b = Double.parseDouble(postfixExpression.pop());
-                System.out.println(a);
-                System.out.println(b);
+    public double calculate(){
+        Stack<Double> expressionStack = new Stack<>();
+
+        for(int i=0; i<postfixExpression.size(); i++){
+            String j = postfixExpression.get(i);
+            if(!(j.equals("+") || j.equals("-") || j.equals("/") || j.equals("*"))){
+                expressionStack.push(Double.parseDouble(j));
             }
             else{
-                System.out.println(postfixExpression.peek());
+                double a = expressionStack.pop();
+                double b = expressionStack.pop();
+                expressionStack.push(operate(j, b, a)); //swapped a and b because that's how stacks work
             }
         }
-        //a = parse double b = parse double
-        //operate (operator, a, b)
+
+        return expressionStack.peek();
     }
 }
 

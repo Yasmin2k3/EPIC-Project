@@ -1,6 +1,7 @@
 public class PrefixCalculator extends Calculator{
     @Override
-    public void calculate(){
+    public double calculate(){
 
+        return 0;
     }
 }
