@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class InfixCalculator extends Calculator{
@@ -23,6 +24,22 @@ public class InfixCalculator extends Calculator{
         this.expression = buildTest();
     }
 
+    private void popOpStack(Stack expressionStack, Stack operatorStack){
+        if (operatorStack == null){
+            System.out.println("Operator stack cannot be null");
+            return;
+        }
+        try{
+            while(!operatorStack.isEmpty() && operatorStack.peek() != "("){
+                System.out.println("Pushed " + operatorStack.peek() + " to expression stack");
+                expressionStack.push(operatorStack.pop());
+            }
+        }catch (EmptyStackException e){
+            System.out.println("Stack is empty");
+        }
+
+    }
+
     //TODO: make private
     //converts infix expression to postfix
     public void infixToPostfix(){
@@ -37,19 +54,24 @@ public class InfixCalculator extends Calculator{
                 if(operatorStack.isEmpty()){
                     operatorStack.push(key);
                 }
-                else if(key.equals(")") || key.equals("(")){
-                    operatorStack.push(key);
-                }
                 //if the stack is not empty, and the current operator has greater or equal precidence: push
-                else if(!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek())){
+                else if(!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek()) || key.equals("(")){
                     operatorStack.push(key);
                 }
-                System.out.println("Operator stack head: " + operatorStack.peek() + "");
+                else if(key.equals(")")){
+                    popOpStack(expressionStack, operatorStack);
+                    operatorStack.pop();
+                }
+                    System.out.println("Operator stack head: " + (operatorStack.isEmpty() ? "null" : operatorStack.peek()) + "");
             }
             else{
                 System.out.println("Pushed " + key + " to expression stack");
                 expressionStack.push(key);
             }
         }
+        popOpStack(expressionStack, operatorStack);
+
+        System.out.println("final expression: " + expressionStack);
+        System.out.println("operator stack: " + operatorStack);
     }
 }
