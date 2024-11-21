@@ -84,4 +84,8 @@ public class InfixCalculator extends Calculator{
 
         System.out.println("\nFinal Expression: " + expressionStack);
     }
+
+    @Override
+    public void calculate(){
+    }
 }

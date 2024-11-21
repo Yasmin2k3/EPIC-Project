@@ -1,5 +1,5 @@
 //TODO: Make abstract
-public class Calculator {
+public abstract class Calculator {
     public Calculator(){
     }
 
@@ -23,5 +23,22 @@ public class Calculator {
         return (precidence(op1) >= precidence(op2));
     }
 
-    
+    //call this in calculate() for example
+    //returns a "operator" b
+    protected double operate(String op, double a, double b){
+        double res = 0;
+        switch (op){
+            case("+"):
+                res = a + b;
+            case("-"):
+                res = a-b;
+            case("*"):
+                res = a*b;
+            case("/"):
+                res = a/b;
+        }
+        return res;
+    }
+
+    public abstract void calculate();
 }
