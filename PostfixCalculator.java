@@ -5,7 +5,6 @@ import java.util.Stack;
 public class PostfixCalculator extends Calculator{
     ArrayList<String> expression;
     ArrayList<String> postfixExpression;
-    double result; //TODO: change this to somewhere else
 
     //will need to eventually take parameters:
     //ArrayList<Character> expression
@@ -43,14 +42,18 @@ public class PostfixCalculator extends Calculator{
             //if current key is an operator or a bracket:
             if(key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")){
                 //push the first operator to stack
-                if(operatorStack.isEmpty()){
+                if(operatorStack.isEmpty() && !key.equals(")")){
                     operatorStack.push(key);
                 }
-                //if the stack is not empty, and the current operator has greater or equal precidence: push
+                //if the current operator has greater or equal precidence: push
                 else if(!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek()) || key.equals("(")){
                     operatorStack.push(key);
                 }
-                else if(key.equals(")")){
+                //if the stack is not empty, and the current operator has lesser precedence or is a ): perform maths.
+                else if(!operatorStack.isEmpty() && !hasPrecidence(key, operatorStack.peek())){
+                    if (key == "+" || key == "-"){
+                        operatorStack.push(key);
+                    }
                     popOpStack(expressionStack, operatorStack);
                 }
             }
@@ -58,7 +61,7 @@ public class PostfixCalculator extends Calculator{
                 expressionStack.push(key);
             }
         }
-        popOpStack(expressionStack, operatorStack);
+        //popOpStack(expressionStack, operatorStack);
 
         return new ArrayList(expressionStack);
     }
