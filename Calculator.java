@@ -2,7 +2,7 @@ public abstract class Calculator {
     public Calculator(){
     }
 
-    // multiplication and division has less precidence than addition and subtraction
+    // multiplication and division has less precidence than addition and subtraction. Power has top precidence
     protected int precidence(String op1){
         try{
             if(op1.equals("^")){
