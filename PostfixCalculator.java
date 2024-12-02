@@ -1,67 +1,52 @@
 import java.util.ArrayList;
-import java.util.EmptyStackException;
+import java.util.Objects;
 import java.util.Stack;
 
 public class PostfixCalculator extends Calculator{
     ArrayList<String> expression;
     ArrayList<String> postfixExpression;
 
-    //will need to eventually take parameters:
-    //ArrayList<Character> expression
     public PostfixCalculator(ArrayList expression){
         this.expression = expression;
         this.postfixExpression = infixToPostfix();
     }
 
-    private void popOpStack(Stack expressionStack, Stack operatorStack){
-        if (operatorStack == null){
-            System.out.println("Operator stack cannot be null");
-            return;
-        }
-        try{
-            while(!operatorStack.isEmpty()){
-                if(operatorStack.peek() == "("){
-                    operatorStack.pop();
-                }
-                else{
-                    expressionStack.push(operatorStack.pop());
-                }
-            }
-        }catch (EmptyStackException e){
-            System.out.println("Stack is empty");
-        }
-
-    }
-
     //converts infix expression to postfix
-    private ArrayList<String> infixToPostfix(){
+    public ArrayList<String> infixToPostfix(){
         Stack<String> operatorStack = new Stack<>();
         Stack<String> expressionStack = new Stack<>();
 
         for(String key: expression){
+            System.out.println("key: " + key);
             //if current key is an operator or a bracket:
             if(key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")){
-                //push the first operator to stack
-                if(operatorStack.isEmpty() && !key.equals(")")){
+                if(key.equals("(")){
                     operatorStack.push(key);
                 }
-                //if the current operator has greater or equal precidence: push
-                else if(!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek()) || key.equals("(")){
-                    operatorStack.push(key);
+                else if(key.equals(")")){
+                    while(!Objects.equals(operatorStack.peek(), "(")) {
+                            expressionStack.push(operatorStack.pop());
+                        }
+                        operatorStack.pop();
                 }
-                //if the stack is not empty, and the current operator has lesser precedence or is a ): perform maths.
-                else if(!operatorStack.isEmpty() && !hasPrecidence(key, operatorStack.peek())){
-                    if (key == "+" || key == "-"){
-                        operatorStack.push(key);
+                else{
+                    //problem where key is always more precident than (
+                    while (!operatorStack.isEmpty() && (hasPrecidence(key, operatorStack.peek()))) {
+                        expressionStack.push(operatorStack.pop());
                     }
-                    popOpStack(expressionStack, operatorStack);
+                    operatorStack.push(key);
                 }
             }
             else{
                 expressionStack.push(key);
             }
+            System.out.println("Operator stack: " + operatorStack);
+            System.out.println("Expression stack: " + expressionStack);
         }
-        //popOpStack(expressionStack, operatorStack);
+
+        while (!operatorStack.isEmpty()) {
+            expressionStack.push(operatorStack.pop());
+        }
 
         return new ArrayList(expressionStack);
     }

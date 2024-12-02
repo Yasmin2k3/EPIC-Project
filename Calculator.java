@@ -22,7 +22,7 @@ public abstract class Calculator {
 
     //if the first operator has more precidence or is the same than the second operator, return true
     protected boolean hasPrecidence(String op1, String op2){
-        return (precidence(op1) >= precidence(op2));
+        return (precidence(op1) <= precidence(op2));
     }
 
     //call this in calculate() for example
