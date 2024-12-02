@@ -1,4 +1,3 @@
-//TODO: Make abstract
 public abstract class Calculator {
     public Calculator(){
     }
@@ -6,7 +5,10 @@ public abstract class Calculator {
     // multiplication and division has less precidence than addition and subtraction
     protected int precidence(String op1){
         try{
-            if (op1.equals("*") || op1.equals("/")){
+            if(op1.equals("^")){
+                return 3;
+            }
+            else if (op1.equals("*") || op1.equals("/")){
                 return 2;
             } else if (op1.equals("+") || op1.equals("-")) {
                 return 1;
