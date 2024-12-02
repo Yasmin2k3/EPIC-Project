@@ -30,7 +30,7 @@ public class PostfixCalculator extends Calculator{
                         operatorStack.pop();
                 }
                 else{
-                    while (!operatorStack.isEmpty() && (hasPrecidence(key, operatorStack.peek()))) {
+                    while (!operatorStack.isEmpty() && (hasPrecedence(key, operatorStack.peek()))) {
                         expressionStack.push(operatorStack.pop());
                     }
                     operatorStack.push(key);

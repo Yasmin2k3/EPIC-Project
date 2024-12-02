@@ -3,7 +3,7 @@ public abstract class Calculator {
     }
 
     // multiplication and division has less precidence than addition and subtraction. Power has top precidence
-    protected int precidence(String op1){
+    protected int precedence(String op1){
         try{
             if(op1.equals("^")){
                 return 3;
@@ -21,8 +21,8 @@ public abstract class Calculator {
     }
 
     //if the first operator has more precidence or is the same than the second operator, return true
-    protected boolean hasPrecidence(String op1, String op2){
-        return (precidence(op1) <= precidence(op2));
+    protected boolean hasPrecedence(String op1, String op2){
+        return (precedence(op1) <= precedence(op2));
     }
 
     //call this in calculate() for example
