@@ -30,6 +30,9 @@ public abstract class Calculator {
     protected double operate(String op, double a, double b){
         double res = 0;
         switch (op){
+            case("^"):
+                res = Math.pow(a, b);
+                break;
             case("+"):
                 res = a+b;
                 break;
