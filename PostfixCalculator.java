@@ -12,7 +12,7 @@ public class PostfixCalculator extends Calculator{
     }
 
     //converts infix expression to postfix
-    public ArrayList<String> infixToPostfix(){
+    private ArrayList<String> infixToPostfix(){
         Stack<String> operatorStack = new Stack<>();
         Stack<String> expressionStack = new Stack<>();
 
@@ -53,21 +53,24 @@ public class PostfixCalculator extends Calculator{
 
     @Override
     public double calculate(){
+        System.out.println(postfixExpression);
         Stack<Double> expressionStack = new Stack<>();
 
-        for(int i=0; i<postfixExpression.size(); i++){
-            String j = postfixExpression.get(i);
-            if(!(j.equals("+") || j.equals("-") || j.equals("/") || j.equals("*"))){
-                expressionStack.push(Double.parseDouble(j));
-            }
-            else{
-                double a = expressionStack.pop();
-                double b = expressionStack.pop();
-                expressionStack.push(operate(j, b, a)); //swapped a and b because that's how stacks work
+        for(String key: postfixExpression){
+            //if what we are currently on can be converted to a double: push it to expression stack
+            try{
+                Double d = Double.valueOf(key);
+                expressionStack.push(d);
+            }catch(NumberFormatException e){
+                double val1 = expressionStack.pop();
+                double val2 = expressionStack.pop();
+
+                expressionStack.push(operate(key, val2, val1));
             }
         }
 
-        return expressionStack.peek();
+        //return the final value
+        return expressionStack.pop();
     }
 }
 
