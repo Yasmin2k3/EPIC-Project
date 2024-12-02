@@ -30,7 +30,6 @@ public class PostfixCalculator extends Calculator{
                         operatorStack.pop();
                 }
                 else{
-                    //problem where key is always more precident than (
                     while (!operatorStack.isEmpty() && (hasPrecidence(key, operatorStack.peek()))) {
                         expressionStack.push(operatorStack.pop());
                     }
@@ -40,8 +39,6 @@ public class PostfixCalculator extends Calculator{
             else{
                 expressionStack.push(key);
             }
-            System.out.println("Operator stack: " + operatorStack);
-            System.out.println("Expression stack: " + expressionStack);
         }
 
         while (!operatorStack.isEmpty()) {
