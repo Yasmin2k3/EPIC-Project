@@ -48,6 +48,7 @@ public class InfixCalculator extends Calculator{
             }
         }
 
+        //while our operator stack isnt empty, finish out the rest of the operations
         while (!operatorStack.isEmpty()) {
             popAndEval(operatorStack.pop(), expressionStack);
         }
