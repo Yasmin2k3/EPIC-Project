@@ -34,6 +34,7 @@ public class PostfixCalculator extends Calculator{
                         expressionStack.push(operatorStack.pop());
                     }
                     operatorStack.push(key);
+
                 }
             }
             else{

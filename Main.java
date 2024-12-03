@@ -33,7 +33,9 @@ public class Main {
                 " | |___| (_| | | (__| |_| | | (_| | || (_) | |\n" +
                 "  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n");
 
-        PostfixCalculator infThing = new PostfixCalculator(buildTest());
+        //PostfixCalculator postThing = new PostfixCalculator(buildTest());
+        //System.out.println(postThing.calculate());
+        InfixCalculator infThing = new InfixCalculator(buildTest());
         System.out.println(infThing.calculate());
     }
 }

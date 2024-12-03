@@ -36,7 +36,7 @@ public class PrefixCalculator extends Calculator {
                 else {
                     // Pop higher or equal-precedence operators from the operator stack
                     // move high precedence operators to precedence stack
-                    while (!operatorStack.isEmpty() && hasPrecidence(key, operatorStack.peek())) {
+                    while (!operatorStack.isEmpty() && hasPrecedence(key, operatorStack.peek())) {
                         String operator = operatorStack.pop();
                         prefixStack.push(operator);
                     }
