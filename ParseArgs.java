@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ParseArgs {
     private static final HashSet<String> arithmeticOperators = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
+    private static final HashSet<String> openClosingParentheses = new HashSet<>(Arrays.asList("(", ")"));
 
     public static List<String> parseArgs(String[] args) {
         List<Character> charList = splitToCharList(args);
@@ -16,13 +17,14 @@ public class ParseArgs {
         List<String> expressionSplit = new ArrayList<>();
         String currentExpression = "";
         for (Character character : expressionChars) {
-            if (arithmeticOperators.contains(character.toString())) {
+            String characterAsString = character.toString();
+            if (arithmeticOperators.contains(characterAsString) | openClosingParentheses.contains(characterAsString)) {
                 expressionSplit.add(currentExpression);
                 currentExpression = "";
-                expressionSplit.add(character.toString());
+                expressionSplit.add(characterAsString);
             }
             else {
-                currentExpression += character.toString();
+                currentExpression += characterAsString;
             }
         }
         return expressionSplit;
