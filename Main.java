@@ -17,7 +17,7 @@ public class Main {
 
     //some data to test with
     private static ArrayList<String> buildTest(){
-        String[] tempList = new String[]{"5", "+", "(", "3", "*", "5", ")", "-", "1"};
+        String[] tempList = new String[]{"5", "+", "(", "3", "*", "5", "^", "2", ")", "-", "1"};
         ArrayList<String> tempExpress = new ArrayList<>();
 
         for (String i: tempList){
@@ -28,19 +28,19 @@ public class Main {
     }
 
     private static void stringTest1(){
-        String test = "(1.9 - 5) * -5^3";
+        String[] test = {"(1.9 - 5) * -5^3"};
         List<String> testOutput = Arrays.asList("(", "1.9", "-", ")", "*", "-5", "^", "3");
         System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
     }
 
     private static void stringTest2(){
-        String test = "(1.9 - 5 * -5^3";
+        String[] test = {"(1.9 - 5 * -5^3"};
         String testOutput = "new exception, incorrect amount of brackets";
         System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
     }
 
     private static void stringTest3(){
-        String test = "(1.9 - * 5) * -5^3";
+        String[] test = {"(1.9 - * 5) * -5^3"};
         String testOutput = "new exception, - and * shouldnt be together";
         System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
     }
@@ -53,8 +53,8 @@ public class Main {
                 " | |___| (_| | | (__| |_| | | (_| | || (_) | |\n" +
                 "  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n");
 
-        //PostfixCalculator postThing = new PostfixCalculator(buildTest());
-        //System.out.println(postThing.calculate());
+//        PostfixCalculator postThing = new PostfixCalculator(buildTest());
+//        System.out.println(postThing.calculate());
         //InfixCalculator infThing = new InfixCalculator(buildTest());
         //System.out.println(infThing.calculate());
         //PrefixCalculator preThing = new PrefixCalculator(buildTest());
