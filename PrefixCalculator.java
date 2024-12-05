@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Stack;
-
 
 public class PrefixCalculator extends Calculator {
     ArrayList<String> expression;
@@ -16,68 +14,57 @@ public class PrefixCalculator extends Calculator {
         Stack<String> operatorStack = new Stack<>();
         Stack<String> prefixStack = new Stack<>();
 
-        for (String key : expression) { // goes through each piece in expression
-            if (key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")) {
-
-                if (key.equals("(")) {
-                    operatorStack.push(key); // push to stack for subexpression start
-                }
-
-                else if (key.equals(")")) {
-                    // Pop operators from the operator stack and push them onto the prefix stack
-                    // until an opening parenthesis is encountered
-                    while (!operatorStack.isEmpty() && !Objects.equals(operatorStack.peek(), "(")) {
-                        String operator = operatorStack.pop(); // move to prefix stack when finished
-                        prefixStack.push(operator);
-                    }
-                    operatorStack.pop(); // get rid of opening parenthesis
-                }
-
-                else {
-                    // Pop higher or equal-precedence operators from the operator stack
-                    // move high precedence operators to precedence stack
-                    while (!operatorStack.isEmpty() && hasPrecedence(key, operatorStack.peek())) {
-                        String operator = operatorStack.pop();
-                        prefixStack.push(operator);
-                    }
-                    operatorStack.push(key); // move current operator to the stack
-                }
-            }
-
-            // numbers
-            else {
-                prefixStack.push(key); // straight to stack
+        ArrayList<String> reversedExpression = new ArrayList<>();
+        for (int i = expression.size() - 1; i >= 0; i--) {
+            String token = expression.get(i);
+            if (token.equals("(")) {
+                reversedExpression.add(")");
+            } else if (token.equals(")")) {
+                reversedExpression.add("(");
+            } else {
+                reversedExpression.add(token);
             }
         }
 
-        // move anything else to the prefix stack
+        for (String key : reversedExpression) {
+            if (key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("^")) {
+                while (!operatorStack.isEmpty() && precidence(key) < precidence(operatorStack.peek())) {
+                    prefixStack.push(operatorStack.pop());
+                }
+                operatorStack.push(key);
+            } else if (key.equals("(")) {
+                operatorStack.push(key);
+            } else if (key.equals(")")) {
+                while (!operatorStack.isEmpty() && !operatorStack.peek().equals("(")) {
+                    prefixStack.push(operatorStack.pop());
+                }
+                operatorStack.pop();
+            } else {
+                prefixStack.push(key);
+            }
+        }
+
         while (!operatorStack.isEmpty()) {
-            String operator = operatorStack.pop();
-            prefixStack.push(operator);
+            prefixStack.push(operatorStack.pop());
         }
 
-        // convert to prefix expression
         ArrayList<String> prefix = new ArrayList<>();
         while (!prefixStack.isEmpty()) {
-            String element = prefixStack.pop();
-            prefix.add(0, element); // add them to the beginning of the array so they are in the right order
+            prefix.add(0, prefixStack.pop());
         }
         return prefix;
     }
 
     @Override
     public double calculate() {
-        System.out.println("Prefix Expression: " + prefixExpression);
-
         Stack<Double> expressionStack = new Stack<>();
 
-        // goes through the prefix expression right to left
         for (int i = prefixExpression.size() - 1; i >= 0; i--) {
             String key = prefixExpression.get(i);
             try {
-                Double number = Double.valueOf(key); // change to double
+                Double number = Double.valueOf(key);
                 expressionStack.push(number);
-            } catch (NumberFormatException e) { // if it is not a number than it has to be an operator
+            } catch (NumberFormatException e) {
                 double val1 = expressionStack.pop();
                 double val2 = expressionStack.pop();
 
@@ -89,3 +76,4 @@ public class PrefixCalculator extends Calculator {
         return expressionStack.pop();
     }
 }
+
