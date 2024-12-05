@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.EmptyStackException;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class InfixCalculator extends Calculator{
-    private final ArrayList<String> expression;
+    private final List<String> expression;
 
-    public InfixCalculator(ArrayList<String> expression){
+    public InfixCalculator(List<String> expression){
         this.expression = expression;
     }
 

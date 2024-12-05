@@ -1,12 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
 public class PostfixCalculator extends Calculator{
-    ArrayList<String> expression;
+    List<String> expression;
     ArrayList<String> postfixExpression;
 
-    public PostfixCalculator(ArrayList expression){
+    public PostfixCalculator(List<String> expression){
         this.expression = expression;
         this.postfixExpression = infixToPostfix();
     }
@@ -49,7 +50,7 @@ public class PostfixCalculator extends Calculator{
             expressionStack.push(operatorStack.pop());
         }
 
-        return new ArrayList(expressionStack);
+        return new ArrayList<>(expressionStack);
     }
 
     @Override
