@@ -27,23 +27,23 @@ public class Main {
         return tempExpress;
     }
 
-    private static void stringTest1(){
-        String[] test = {"(1.9 - 5) * -5^3"};
-        List<String> testOutput = Arrays.asList("(", "1.9", "-", ")", "*", "-5", "^", "3");
-        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-    }
-
-    private static void stringTest2(){
-        String[] test = {"(1.9 - 5 * -5^3"};
-        String testOutput = "new exception, incorrect amount of brackets";
-        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-    }
-
-    private static void stringTest3(){
-        String[] test = {"(1.9 - * 5) * -5^3"};
-        String testOutput = "new exception, - and * shouldnt be together";
-        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-    }
+//    private static void stringTest1(){
+//        String[] test = {"(1.9 - 5) * -5^3"};
+//        List<String> testOutput = Arrays.asList("(", "1.9", "-", ")", "*", "-5", "^", "3");
+//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
+//    }
+//
+//    private static void stringTest2(){
+//        String[] test = {"(1.9 - 5 * -5^3"};
+//        String testOutput = "new exception, incorrect amount of brackets";
+//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
+//    }
+//
+//    private static void stringTest3(){
+//        String[] test = {"(1.9 - * 5) * -5^3"};
+//        String testOutput = "new exception, - and * shouldnt be together";
+//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
+//    }
 
     public static void main(String[] args) {
         System.out.printf("   _____      _            _       _\n" +
@@ -53,15 +53,15 @@ public class Main {
                 " | |___| (_| | | (__| |_| | | (_| | || (_) | |\n" +
                 "  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n");
 
-//        PostfixCalculator postThing = new PostfixCalculator(buildTest());
-//        System.out.println(postThing.calculate());
+        PostfixCalculator postThing = new PostfixCalculator(buildTest());
+        System.out.println(postThing.calculate());
         //InfixCalculator infThing = new InfixCalculator(buildTest());
         //System.out.println(infThing.calculate());
-        //PrefixCalculator preThing = new PrefixCalculator(buildTest());
-        //System.out.println(preThing.calculate());
+//        PrefixCalculator preThing = new PrefixCalculator(buildTest());
+//        System.out.println(preThing.calculate());
 
-        stringTest1();
-        stringTest2();
-        stringTest3();
+//        stringTest1();
+//        stringTest2();
+//        stringTest3();
     }
 }

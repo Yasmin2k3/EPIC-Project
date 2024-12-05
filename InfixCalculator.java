@@ -26,7 +26,7 @@ public class InfixCalculator extends Calculator{
         for(String key: expression){
             System.out.println("key: " + key);
             //if current key is an operator or a bracket:
-            if(key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")){
+            if(operators.contains(key)){
                 if(key.equals("(")){
                     operatorStack.push(key);
                 }

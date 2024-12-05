@@ -19,20 +19,23 @@ public class PostfixCalculator extends Calculator{
         for(String key: expression){
             System.out.println("key: " + key);
             //if current key is an operator or a bracket:
-            if(key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("(") || key.equals(")")){
+            if(operators.contains(key)){
                 if(key.equals("(")){
                     operatorStack.push(key);
                 }
                 else if(key.equals(")")){
                     while(!Objects.equals(operatorStack.peek(), "(")) {
+                            System.out.println(operatorStack.peek() + " pushed to expression (close bracket)");
                             expressionStack.push(operatorStack.pop());
                         }
                         operatorStack.pop();
                 }
                 else{
                     while (!operatorStack.isEmpty() && (hasPrecedence(key, operatorStack.peek()))) {
+                        System.out.println(operatorStack.peek() + " pushed to expression (precedence)");
                         expressionStack.push(operatorStack.pop());
                     }
+                    System.out.println(key + " pushed to operators");
                     operatorStack.push(key);
 
                 }

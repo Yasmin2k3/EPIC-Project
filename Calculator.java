@@ -1,4 +1,6 @@
 public abstract class Calculator {
+    protected String operators = "+-*^/()";
+
     public Calculator(){
     }
 
