@@ -28,7 +28,7 @@ public class PrefixCalculator extends Calculator {
 
         for (String key : reversedExpression) {
             if (key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("^")) {
-                while (!operatorStack.isEmpty() && precedence(key) < precedence(operatorStack.peek())) {
+                while (!operatorStack.isEmpty() && precidence(key) < precidence(operatorStack.peek())) {
                     prefixStack.push(operatorStack.pop());
                 }
                 operatorStack.push(key);
@@ -52,7 +52,6 @@ public class PrefixCalculator extends Calculator {
         while (!prefixStack.isEmpty()) {
             prefix.add(0, prefixStack.pop());
         }
-
         return prefix;
     }
 
