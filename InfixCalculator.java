@@ -43,6 +43,7 @@ public class InfixCalculator extends Calculator{
             else{
                 expressionStack.push(Double.valueOf(key));
             }
+
         }
 
         //while our operator stack isnt empty, finish out the rest of the operations

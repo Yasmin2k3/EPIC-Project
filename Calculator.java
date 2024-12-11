@@ -5,6 +5,7 @@ public abstract class Calculator {
     }
 
     // multiplication and division has less precidence than addition and subtraction. Power has top precidence
+    //TODO: make private
     protected int precedence(String op1){
         try{
             if(op1.equals("^")){
