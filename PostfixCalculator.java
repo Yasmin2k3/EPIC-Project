@@ -14,7 +14,7 @@ public class PostfixCalculator extends Calculator{
 
     @Override
     public double calculate(){
-        System.out.println(postfixExpression);
+        System.out.println("Postfix equation: " + postfixExpression);
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: postfixExpression){

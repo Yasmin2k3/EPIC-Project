@@ -9,9 +9,8 @@ public abstract class Calculator {
     public Calculator(){
     }
 
-    // multiplication and division has less precidence than addition and subtraction. Power has top precidence
-    //TODO: make private
-    protected int precedence(String op1){
+    //defines order of precedence
+    private int precedence(String op1){
         try{
             if(op1.equals("^")){
                 return 3;
@@ -28,12 +27,11 @@ public abstract class Calculator {
         return -1;
     }
 
-    //if the first operator has more precidence or is the same than the second operator, return true
+    //return true if first operator has less or equal precedence
     protected boolean hasPrecedence(String op1, String op2){
         return (precedence(op1) <= precedence(op2));
     }
 
-    //call this in calculate() for example
     //returns a "operator" b
     protected double operate(String op, double a, double b){
         double res = 0;
@@ -57,12 +55,12 @@ public abstract class Calculator {
         return res;
     }
 
+    //Used by both PostfixCalculator and PrefixCalculator.
     protected ArrayList<String> infixToPostfix(List<String> expression){
         Stack<String> operatorStack = new Stack<>();
         Stack<String> expressionStack = new Stack<>();
 
         for(String key: expression){
-            System.out.println("key: " + key);
             //if current key is an operator or a bracket:
             if(operators.contains(key)){
                 if(key.equals("(")){
@@ -70,17 +68,14 @@ public abstract class Calculator {
                 }
                 else if(key.equals(")")){
                     while(!Objects.equals(operatorStack.peek(), "(")) {
-                        System.out.println(operatorStack.peek() + " pushed to expression (close bracket)");
                         expressionStack.push(operatorStack.pop());
                     }
                     operatorStack.pop();
                 }
                 else{
                     while (!operatorStack.isEmpty() && (hasPrecedence(key, operatorStack.peek()))) {
-                        System.out.println(operatorStack.peek() + " pushed to expression (precedence)");
                         expressionStack.push(operatorStack.pop());
                     }
-                    System.out.println(key + " pushed to operators");
                     operatorStack.push(key);
 
                 }
