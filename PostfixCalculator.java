@@ -13,7 +13,7 @@ public class PostfixCalculator extends Calculator{
     }
 
     @Override
-    public double calculate(){
+    public double calculate() throws RuntimeException{
         System.out.println("Postfix equation: " + postfixExpression);
         Stack<Double> expressionStack = new Stack<>();
 

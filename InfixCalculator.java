@@ -16,7 +16,7 @@ public class InfixCalculator extends Calculator{
 
 
     @Override
-    public double calculate(){
+    public double calculate() throws RuntimeException{
         Stack<String> operatorStack = new Stack<>();
         Stack<Double> expressionStack = new Stack<>();
 

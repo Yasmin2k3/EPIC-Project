@@ -11,20 +11,16 @@ public abstract class Calculator {
 
     //defines order of precedence
     private int precedence(String op1){
-        try{
-            if(op1.equals("^")){
-                return 3;
-            }
-            else if (op1.equals("*") || op1.equals("/")){
-                return 2;
-            } else if (op1.equals("+") || op1.equals("-")) {
-                return 1;
-            }
-        } catch (Exception e){
-            System.out.println("Incorrect value for op1 (" + op1 + ") " + e);
+        if(op1.equals("^")){
+            return 3;
         }
-
-        return -1;
+        else if (op1.equals("*") || op1.equals("/")){
+            return 2;
+        } else if (op1.equals("+") || op1.equals("-")) {
+            return 1;
+        } else {
+            throw new RuntimeException("Incorrect operator");
+        }
     }
 
     //return true if first operator has less or equal precedence
