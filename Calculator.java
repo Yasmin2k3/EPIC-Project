@@ -11,16 +11,13 @@ public abstract class Calculator {
 
     //defines order of precedence
     private int precedence(String op1){
-        if(op1.equals("^")){
-            return 3;
-        }
-        else if (op1.equals("*") || op1.equals("/")){
-            return 2;
-        } else if (op1.equals("+") || op1.equals("-")) {
-            return 1;
-        } else {
-            throw new RuntimeException("Incorrect operator");
-        }
+        return switch (op1) {
+            case "^" -> 3;
+            case "*", "/" -> 2;
+            case "+", "-" -> 1;
+            default -> -1;
+            //throw new RuntimeException("Incorrect operator");
+        };
     }
 
     //return true if first operator has less or equal precedence
@@ -32,21 +29,11 @@ public abstract class Calculator {
     protected double operate(String op, double a, double b){
         double res = 0;
         switch (op){
-            case("^"):
-                res = Math.pow(a, b);
-                break;
-            case("+"):
-                res = a+b;
-                break;
-            case("-"):
-                res = a-b;
-                break;
-            case("*"):
-                res = a*b;
-                break;
-            case("/"):
-                res = a/b;
-                break;
+            case"^" -> res = Math.pow(a, b);
+            case"+" -> res = a+b;
+            case"-" -> res = a-b;
+            case"*" -> res = a*b;
+            case"/" -> res = a/b;
         }
         return res;
     }
