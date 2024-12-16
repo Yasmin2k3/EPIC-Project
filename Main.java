@@ -34,8 +34,8 @@ public class Main {
 //    }
 //
 //    private static void stringTest3(){
-//        String[] test = {"(1.9 - * 5) * -5^3"};
-//        String testOutput = "new exception, - and * shouldnt be together";
+//        String[] test = {"(1.9 - * 5) * + 5^3"};
+//        String testOutput = "new exception, + and * shouldnt be together";
 //        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
 //    }
     public static void main(String[] args) {
