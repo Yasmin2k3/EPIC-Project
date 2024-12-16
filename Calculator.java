@@ -3,6 +3,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
+import static java.lang.Double.NEGATIVE_INFINITY;
+import static java.lang.Double.POSITIVE_INFINITY;
+
 public abstract class Calculator {
     protected String operators = "+-*^/()";
 
@@ -11,20 +14,13 @@ public abstract class Calculator {
 
     //defines order of precedence
     private int precedence(String op1){
-        try{
-            if(op1.equals("^")){
-                return 3;
-            }
-            else if (op1.equals("*") || op1.equals("/")){
-                return 2;
-            } else if (op1.equals("+") || op1.equals("-")) {
-                return 1;
-            }
-        } catch (Exception e){
-            System.out.println("Incorrect value for op1 (" + op1 + ") " + e);
-        }
-
-        return -1;
+        return switch (op1) {
+            case "^" -> 3;
+            case "*", "/" -> 2;
+            case "+", "-" -> 1;
+            default -> -1;
+            //throw new RuntimeException("Incorrect operator");
+        };
     }
 
     //return true if first operator has less or equal precedence
@@ -36,21 +32,14 @@ public abstract class Calculator {
     protected double operate(String op, double a, double b){
         double res = 0;
         switch (op){
-            case("^"):
-                res = Math.pow(a, b);
-                break;
-            case("+"):
-                res = a+b;
-                break;
-            case("-"):
-                res = a-b;
-                break;
-            case("*"):
-                res = a*b;
-                break;
-            case("/"):
-                res = a/b;
-                break;
+            case"^" -> res = Math.pow(a, b);
+            case"+" -> res = a+b;
+            case"-" -> res = a-b;
+            case"*" -> res = a*b;
+            case"/" -> res = a/b;
+        }
+        if (res == NEGATIVE_INFINITY || res == POSITIVE_INFINITY){
+            throw new ArithmeticException("attempted to divide by zero");
         }
         return res;
     }
