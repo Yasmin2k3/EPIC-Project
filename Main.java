@@ -54,8 +54,6 @@ public class Main {
             System.out.println("Something went wrong: " + e);
         }
 
-        System.out.println(args.length==0);
-
         while(running){
             Scanner scanner = new Scanner(System.in);
             System.out.println("Would you like to evaluate in:\n1) infix(normal)\n2) prefix\n3) postfix?\nPress 1, 2 or 3. Press x to exit: ");

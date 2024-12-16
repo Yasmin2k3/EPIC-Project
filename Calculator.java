@@ -9,7 +9,7 @@ import static java.lang.Double.POSITIVE_INFINITY;
 public abstract class Calculator {
     protected String operators = "+-*^/()";
 
-    public Calculator(){
+    public Calculator(String[] args){
     }
 
     //defines order of precedence
@@ -19,7 +19,6 @@ public abstract class Calculator {
             case "*", "/" -> 2;
             case "+", "-" -> 1;
             default -> -1;
-            //throw new RuntimeException("Incorrect operator");
         };
     }
 
