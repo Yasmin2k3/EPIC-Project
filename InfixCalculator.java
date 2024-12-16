@@ -7,6 +7,7 @@ public class InfixCalculator extends Calculator{
         this.expression = expression;
     }
 
+    //pops two numbers from our expression stack and operates the top operator on the operator stack.
     private void popAndEval(String key, Stack<Double> expressionStack){
         double val1 = expressionStack.pop();
         double val2 = expressionStack.pop();
@@ -15,14 +16,16 @@ public class InfixCalculator extends Calculator{
     }
 
 
+    //Evaluates expression using Shunting Yard Algorithm by Dijkstra
     @Override
     public double calculate(){
+        System.out.println("Equation: " + expression);
+
         Stack<String> operatorStack = new Stack<>();
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: expression){
-            System.out.println("key: " + key);
-            //if current key is an operator or a bracket:
+            //Checks if current key is one of our operators in Calculator class
             if(operators.contains(key)){
                 if(key.equals("(")){
                     operatorStack.push(key);
@@ -46,7 +49,7 @@ public class InfixCalculator extends Calculator{
 
         }
 
-        //while our operator stack isnt empty, finish out the rest of the operations
+        //while our operator stack isn't empty, finish out the rest of the operations.
         while (!operatorStack.isEmpty()) {
             popAndEval(operatorStack.pop(), expressionStack);
         }

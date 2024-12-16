@@ -56,6 +56,7 @@ public abstract class Calculator {
     }
 
     //Used by both PostfixCalculator and PrefixCalculator.
+    //Converts an infix expression to a postfix expression using the Shunting Yard Algorithm
     protected ArrayList<String> infixToPostfix(List<String> expression){
         Stack<String> operatorStack = new Stack<>();
         Stack<String> expressionStack = new Stack<>();
@@ -90,6 +91,10 @@ public abstract class Calculator {
         }
 
         return new ArrayList<>(expressionStack);
+    }
+
+    public void printCalculation(String key, Stack<String> operatorStack, Stack<String> expressionStack){
+
     }
 
     public abstract double calculate();

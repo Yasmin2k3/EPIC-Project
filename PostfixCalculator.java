@@ -4,14 +4,14 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class PostfixCalculator extends Calculator{
-    List<String> expression;
     ArrayList<String> postfixExpression;
 
     public PostfixCalculator(List<String> expression){
-        this.expression = expression;
+        //transforms the original equation into postfix.
         this.postfixExpression = infixToPostfix(expression);
     }
 
+    //Calculates a postfix expression
     @Override
     public double calculate(){
         System.out.println("Postfix equation: " + postfixExpression);

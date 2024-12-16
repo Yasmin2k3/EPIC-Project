@@ -1,62 +1,41 @@
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class PrefixCalculator extends Calculator {
-    ArrayList<String> expression;
     ArrayList<String> prefixExpression;
 
-    public PrefixCalculator(ArrayList<String> expression) {
-        this.expression = expression;
-        this.prefixExpression = infixToPrefix();
+    public PrefixCalculator(List<String> expression) {
+        this.prefixExpression = infixToPrefix(expression);
     }
 
-    private ArrayList<String> infixToPrefix() {
-        Stack<String> operatorStack = new Stack<>();
-        Stack<String> prefixStack = new Stack<>();
+    //Converts infix expression to a prefix one.
+    private ArrayList<String> infixToPrefix(List<String> expression) {
 
-        ArrayList<String> reversedExpression = new ArrayList<>();
-        for (int i = expression.size() - 1; i >= 0; i--) {
-            String token = expression.get(i);
+        //making new reverse expression to keep original arraylist unchanged.
+        ArrayList<String> reversedExpression = new ArrayList<>(expression);
+
+        Collections.reverse(reversedExpression);
+
+        //replace ( with ) and ) with (
+        for (int i =0; i < expression.size(); i++) {
+            String token = reversedExpression.get(i);
             if (token.equals("(")) {
-                reversedExpression.add(")");
+                reversedExpression.set(i, ")");
             } else if (token.equals(")")) {
-                reversedExpression.add("(");
-            } else {
-                reversedExpression.add(token);
+                reversedExpression.set(i, "(");
             }
         }
 
-        for (String key : reversedExpression) {
-            if (key.equals("+") || key.equals("-") || key.equals("/") || key.equals("*") || key.equals("^")) {
-                while (!operatorStack.isEmpty() && precedence(key) < precedence(operatorStack.peek())) {
-                    prefixStack.push(operatorStack.pop());
-                }
-                operatorStack.push(key);
-            } else if (key.equals("(")) {
-                operatorStack.push(key);
-            } else if (key.equals(")")) {
-                while (!operatorStack.isEmpty() && !operatorStack.peek().equals("(")) {
-                    prefixStack.push(operatorStack.pop());
-                }
-                operatorStack.pop();
-            } else {
-                prefixStack.push(key);
-            }
-        }
+        ArrayList<String> prefix = infixToPostfix(reversedExpression);
 
-        while (!operatorStack.isEmpty()) {
-            prefixStack.push(operatorStack.pop());
-        }
-
-        ArrayList<String> prefix = new ArrayList<>();
-        while (!prefixStack.isEmpty()) {
-            prefix.add(0, prefixStack.pop());
-        }
+        //reversing the prefix stack
+        Collections.reverse(prefix);
         return prefix;
     }
 
+    //Calculates a prefix expression
     @Override
     public double calculate() {
+        System.out.println("Prefix equation: " + prefixExpression);
         Stack<Double> expressionStack = new Stack<>();
 
         for (int i = prefixExpression.size() - 1; i >= 0; i--) {
