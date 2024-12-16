@@ -1,4 +1,4 @@
-/*
+package com.epic;/*
 Title?:
    _____      _            _       _
   / ____|    | |          | |     | |
@@ -21,23 +21,7 @@ public class Main {
         }
         return tempExpress;
     }
-    //    private static void stringTest1(){
-//        String[] test = {"(1.9 - 5) * -5^3"};
-//        List<String> testOutput = Arrays.asList("(", "1.9", "-", ")", "*", "-5", "^", "3");
-//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-//    }
-//
-//    private static void stringTest2(){
-//        String[] test = {"(1.9 - 5 * -5^3"};
-//        String testOutput = "new exception, incorrect amount of brackets";
-//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-//    }
-//
-//    private static void stringTest3(){
-//        String[] test = {"(1.9 - * 5) * + 5^3"};
-//        String testOutput = "new exception, + and * shouldnt be together";
-//        System.out.println("Test1 Expected Output: " + testOutput + "\nCurrent Output: " + ParseArgs.parseArgs(test));
-//    }
+
     public static void main(String[] args) {
         boolean running = true;
 

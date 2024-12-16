@@ -1,3 +1,5 @@
+package com.epic;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -6,6 +8,11 @@ import java.util.List;
 public class ParseArgs {
     private static final HashSet<String> arithmeticOperators = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
     private static final HashSet<String> openClosingParentheses = new HashSet<>(Arrays.asList("(", ")"));
+
+    public static void main (String[] args) {
+        String[] test = {"(1.9 - 5) * -5^3"};
+        parseArgs(test);
+    }
 
     public static List<String> parseArgs(String[] args) {
         List<Character> charList = splitToCharList(args);
