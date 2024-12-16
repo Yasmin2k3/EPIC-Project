@@ -15,7 +15,6 @@ public class InfixCalculator extends Calculator{
         expressionStack.push(operate(key, val2, val1));
     }
 
-
     //Evaluates expression using Shunting Yard Algorithm by Dijkstra
     @Override
     public double calculate(){

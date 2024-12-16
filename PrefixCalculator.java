@@ -7,7 +7,7 @@ public class PrefixCalculator extends Calculator {
         this.prefixExpression = infixToPrefix(expression);
     }
 
-    //Converts infix expression to a prefix one.
+    //Converts infix expression to a prefix one
     private ArrayList<String> infixToPrefix(List<String> expression) {
 
         //making new reverse expression to keep original arraylist unchanged.

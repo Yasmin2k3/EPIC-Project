@@ -7,7 +7,7 @@ public class PostfixCalculator extends Calculator{
     ArrayList<String> postfixExpression;
 
     public PostfixCalculator(List<String> expression){
-        //transforms the original equation into postfix.
+        //transforms the original equation into postfix
         this.postfixExpression = infixToPostfix(expression);
     }
 
