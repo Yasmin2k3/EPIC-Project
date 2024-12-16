@@ -47,12 +47,6 @@ public class Main {
                 " | |    / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n" +
                 " | |___| (_| | | (__| |_| | | (_| | || (_) | |\n" +
                 "  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n");
-        try{
-            PostfixCalculator postThing = new PostfixCalculator(buildTest());
-            System.out.println(postThing.calculate());
-        } catch (ArithmeticException e){
-            System.out.println("Something went wrong: " + e);
-        }
 
         while(running){
             Scanner scanner = new Scanner(System.in);
@@ -65,13 +59,13 @@ public class Main {
                     System.out.println("Thank you for using Stacky!");
                     running = false;
                 } else if (input.equals("1")) {
-                    InfixCalculator infix = new InfixCalculator(buildTest());
+                    InfixCalculator infix = new InfixCalculator(args, buildTest());
                     infix.calculate();
                 } else if (input.equals("2")){
-                    PrefixCalculator prefix = new PrefixCalculator(buildTest());
+                    PrefixCalculator prefix = new PrefixCalculator(args, buildTest());
                     prefix.calculate();
                 } else if (input.equals("3")){
-                    PostfixCalculator postfix = new PostfixCalculator(buildTest());
+                    PostfixCalculator postfix = new PostfixCalculator(args, buildTest());
                     postfix.calculate();
                 }
             }catch (InputMismatchException | ArithmeticException e){

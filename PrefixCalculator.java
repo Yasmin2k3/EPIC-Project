@@ -3,7 +3,8 @@ import java.util.*;
 public class PrefixCalculator extends Calculator {
     ArrayList<String> prefixExpression;
 
-    public PrefixCalculator(List<String> expression) {
+    public PrefixCalculator(String[] arg, List<String> expression) {
+        super(arg);
         this.prefixExpression = infixToPrefix(expression);
     }
 

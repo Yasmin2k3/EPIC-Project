@@ -6,7 +6,8 @@ import java.util.Stack;
 public class PostfixCalculator extends Calculator{
     ArrayList<String> postfixExpression;
 
-    public PostfixCalculator(List<String> expression){
+    public PostfixCalculator(String[] arg, List<String> expression){
+        super(arg);
         //transforms the original equation into postfix
         this.postfixExpression = infixToPostfix(expression);
     }

@@ -3,7 +3,8 @@ import java.util.*;
 public class InfixCalculator extends Calculator{
     private final List<String> expression;
 
-    public InfixCalculator(List<String> expression){
+    public InfixCalculator(String[] arg, List<String> expression){
+        super(arg);
         this.expression = expression;
     }
 
