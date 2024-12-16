@@ -1,0 +1,62 @@
+= Stacky Dev Handbook
+
+== Download
+Clone this repository with the following git commamnd.
+
+[source, bash]
+----
+git clone git@github.com:Yasmin2k3/EPIC-Project.git
+----
+
+== Use of Maven
+We used link:https://maven.apache.org/[Apache Maven] to manage some of the development lifecycle of this project. It simplifies and strengthens the development of this project, providing an all-in-one tool to manage dependencies, tests, builds etc.
+
+Maven depends on a link:https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[conventional directory structure].
+
+=== Prerequisites
+
+1. *Ensure Correct pwd*: Before you run any Maven commands, the current working directory of your shell session must be the project root (where the pom.xml file is located).
+2. *Ensure you have maven installed*: Run the command `mvn -v` to check if you have Maven installed on your local machine. If not, you can link:https://maven.apache.org/download.cgi[download here] with respect to your local setup.
+
+=== Build
+
+==== Clean your project directory
+
+[source, bash]
+----
+mvn clean install
+----
+
+=== Breakdown of commands
+- `mvn` specifies that this is a maven command.
+- `clean` tells maven to remove the _./target_ directory from your local project directory (providing a blank slate for new build) - if there is a _./target_ folder.
+- `install` installs dependencies specified in the _pom.xml_.
+
+==== Run the build command
+
+[source, bash]
+----
+mvn build
+----
+
+===== What does the build command do?
+
+The build command is a combination of a couple of the standard link:https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html[maven lifecycles]. Essentially, it compiles and tests everything all in one.
+
+=== Test
+To run all tests specified in this project in isolation, run the command:
+
+[source, bash]
+----
+mvn test
+----
+
+The JUnit test results will be printed to the console.
+
+=== Compile
+If you want to try compiling the project in isolation (compiling all files to binaries and storing them in _./target_ folder), run the following command.
+
+[source, bash]
+----
+mvn compile
+----
