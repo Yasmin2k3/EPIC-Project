@@ -5,6 +5,36 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+class Tokenizer {
+    private final String input;
+    private int pos = 0;
+
+    public Tokenizer(String input) {
+        this.input = input.replaceAll("\\s+", "");
+    }
+
+    public char peek() {
+        return input.charAt(pos);
+    }
+
+    public boolean hasNext() {
+        return (pos < input.length());
+    }
+
+    public char consume() {
+        return input.charAt(pos++);
+    }
+
+    public double consumeNumber() {
+        StringBuilder sb = new StringBuilder();
+        while (hasNext() && (Character.isDigit(peek()) || peek() == '.')) {
+            sb.append(consume());
+        }
+        return Double.parseDouble(sb.toString());
+    }
+    }
+}
+
 public class ParseArgs {
     private static final HashSet<String> arithmeticOperators = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
     private static final HashSet<String> openClosingParentheses = new HashSet<>(Arrays.asList("(", ")"));
