@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main {
     //some data to test with
     private static ArrayList<String> buildTest(){
-        String[] tempList = new String[]{"5", "+", "(", "3", "*", "5", "^", "2", ")", "-", "1", "/", "0"};
+        String[] tempList = new String[]{"12", "/", "(", "2", "+", ")", "1"};
         ArrayList<String> tempExpress = new ArrayList<>();
         for (String i: tempList){
             tempExpress.add(i);
@@ -44,13 +44,13 @@ public class Main {
                     running = false;
                 } else if (input.equals("1")) {
                     InfixCalculator infix = new InfixCalculator(args, buildTest());
-                    infix.calculate();
+                    System.out.println(infix.calculate());
                 } else if (input.equals("2")){
                     PrefixCalculator prefix = new PrefixCalculator(args, buildTest());
-                    prefix.calculate();
+                    System.out.println(prefix.calculate());
                 } else if (input.equals("3")){
                     PostfixCalculator postfix = new PostfixCalculator(args, buildTest());
-                    postfix.calculate();
+                    System.out.println(postfix.calculate());
                 }
             }catch (InputMismatchException | ArithmeticException e){
                 System.out.println("Something went wrong: " + e);
