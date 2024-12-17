@@ -82,6 +82,13 @@ public abstract class Calculator {
 
         return new ArrayList<>(expressionStack);
     }
+    
+    protected void printStack(String currentElement, Stack<String> operatorStack, Stack<Double> expressionStack) {
+        System.out.println("Current Element: " + currentElement);
+        System.out.println("Operator Stack: " + operatorStack);
+        System.out.println("Expression Stack: " + expressionStack);
+        System.out.println("-----------------------------------");
+    }
 
     public void printCalculation(String key, Stack<String> operatorStack, Stack<String> expressionStack){
     }
