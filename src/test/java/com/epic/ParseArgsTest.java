@@ -30,22 +30,19 @@ class ParseArgsTest {
     }
 
     @Test
-    void invalidOperatorPair() {
-        String input = "2+/2";
+    void unmatchedParenthesis() {
+        String input = "(1";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
 
     @Test
-    void invalidDecimalPoint() {
-        String input = "2..2";
+    void invalidVocabulary() {
+        String input = "a";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
 
     @Test
-    void emptyParentheses() {
-        String input = "()";
-        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    void operandWithUnmatchedValue() {
+        String input = "22-";
     }
-
-
 }
