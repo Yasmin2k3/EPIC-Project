@@ -1,9 +1,6 @@
 package com.epic;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class PostfixCalculator extends Calculator{
     ArrayList<String> postfixExpression;
@@ -21,6 +18,8 @@ public class PostfixCalculator extends Calculator{
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: postfixExpression){
+            int count = 0;
+            count ++;
             //if what we are currently on can be converted to a double: push it to expression stack
             try{
                 Double d = Double.valueOf(key);
@@ -31,10 +30,16 @@ public class PostfixCalculator extends Calculator{
 
                 expressionStack.push(operate(key, val2, val1));
             }
+            printStack(key, expressionStack);
+            if(!(count == postfixExpression.size())) {
+                continueOrExit();
+            }
         }
 
         //return the final value
+        System.out.println("Final value: " + expressionStack.peek());
+        System.out.println("-----------------------------------\n\n");
         return expressionStack.pop();
     }
 }
-
+//

@@ -1,5 +1,5 @@
 package com.epic;
-
+//
 import java.util.*;
 
 public class InfixCalculator extends Calculator{
@@ -27,6 +27,8 @@ public class InfixCalculator extends Calculator{
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: expression){
+            int count = 0;
+            count++;
             //Checks if current key is one of our operators in Calculator class
             if(operators.contains(key)){
                 if(key.equals("(")){
@@ -48,7 +50,8 @@ public class InfixCalculator extends Calculator{
             else{
                 expressionStack.push(Double.valueOf(key));
             }
-
+            printStack(key, operatorStack, expressionStack);
+            if(!(count<expression.size())) continueOrExit();
         }
 
         //while our operator stack isn't empty, finish out the rest of the operations.
@@ -56,6 +59,9 @@ public class InfixCalculator extends Calculator{
             popAndEval(operatorStack.pop(), expressionStack);
         }
 
+        //prints final value
+        System.out.println("Final value: " + expressionStack.peek());
+        System.out.println("-----------------------------------\n\n");
         return expressionStack.peek();
     }
 }

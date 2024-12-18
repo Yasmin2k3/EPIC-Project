@@ -1,12 +1,4 @@
-package com.epic;/*
-Title?:
-   _____      _            _       _
-  / ____|    | |          | |     | |
- | |     __ _| | ___ _   _| | __ _| |_ ___  _ __
- | |    / _` | |/ __| | | | |/ _` | __/ _ \| '__|
- | |___| (_| | | (__| |_| | | (_| | || (_) | |
-  \_____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
- */
+package com.epic;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         boolean running = true;
+       // String arg = args[0];
         String arg;
 
 
@@ -47,16 +40,17 @@ public class Main {
                         running = false;
                     }
                     case "1" -> {
-                            mycalculator = new InfixCalculator(arg);
-                            System.out.println(mycalculator.calculate());
+                        mycalculator = new InfixCalculator(arg);
+                       mycalculator.calculate();
+
                     }
                     case "2" -> {
                         mycalculator = new PrefixCalculator(arg);
-                        System.out.println(mycalculator.calculate());
+                        mycalculator.calculate();
                     }
                     case "3" -> {
                         mycalculator = new PostfixCalculator(arg);
-                        System.out.println(mycalculator.calculate());
+                        mycalculator.calculate();
                     }
                     default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
@@ -64,8 +58,6 @@ public class Main {
                 System.out.println("Something went wrong: " + e);
             }
         }
-//        stringTest1();
-//        stringTest2();
-//        stringTest3();
+
     }
 }
