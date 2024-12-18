@@ -95,7 +95,7 @@ public abstract class Calculator {
 
 
     }
-
+  
     protected void printStack(String currentElement, Stack<Double> expressionStack) {
         // Delegate to the 3-argument method, passing null for the operatorStack
         printStack(currentElement, null, expressionStack);
@@ -127,5 +127,3 @@ public abstract class Calculator {
         public abstract double calculate ();
     }
 
-
-//
