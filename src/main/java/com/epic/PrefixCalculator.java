@@ -5,9 +5,9 @@ import java.util.*;
 public class PrefixCalculator extends Calculator {
     ArrayList<String> prefixExpression;
 
-    public PrefixCalculator(String[] arg, List<String> expression) {
-        super(arg);
-        this.prefixExpression = infixToPrefix(expression);
+    public PrefixCalculator(String expression) {
+        super(expression);
+        this.prefixExpression = infixToPrefix(infixExpression);
     }
 
     //Converts infix expression to a prefix one
@@ -19,7 +19,7 @@ public class PrefixCalculator extends Calculator {
         Collections.reverse(reversedExpression);
 
         //replace ( with ) and ) with (
-        for (int i =0; i < expression.size(); i++) {
+        for (int i = 0; i < expression.size(); i++) {
             String token = reversedExpression.get(i);
             if (token.equals("(")) {
                 reversedExpression.set(i, ")");
@@ -53,7 +53,15 @@ public class PrefixCalculator extends Calculator {
                 double result = operate(key, val1, val2);
                 expressionStack.push(result);
             }
+            printStack2(key, expressionStack);
+            //a break
+            System.out.println("Press Enter to continue or type 'x' to exit.");
+            Scanner scanner = new Scanner(System.in);
+            //String choice = scanner.nextLine();
+            scanner.close();
+
         }
+        //returns final value which gets printed in main
 
         return expressionStack.pop();
     }

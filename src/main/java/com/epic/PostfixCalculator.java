@@ -8,10 +8,10 @@ import java.util.Stack;
 public class PostfixCalculator extends Calculator{
     ArrayList<String> postfixExpression;
 
-    public PostfixCalculator(String[] arg, List<String> expression){
-        super(arg);
+    public PostfixCalculator(String expression){
+        super(expression);
         //transforms the original equation into postfix
-        this.postfixExpression = infixToPostfix(expression);
+        this.postfixExpression = infixToPostfix(infixExpression);
     }
 
     //Calculates a postfix expression
@@ -37,4 +37,3 @@ public class PostfixCalculator extends Calculator{
         return expressionStack.pop();
     }
 }
-

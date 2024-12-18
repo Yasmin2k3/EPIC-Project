@@ -1,29 +1,23 @@
-package com.epic;/*
-Title?:
-   _____      _            _       _
-  / ____|    | |          | |     | |
- | |     __ _| | ___ _   _| | __ _| |_ ___  _ __
- | |    / _` | |/ __| | | | |/ _` | __/ _ \| '__|
- | |___| (_| | | (__| |_| | | (_| | || (_) | |
-  \_____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
- */
+package com.epic;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    //some data to test with
-    private static ArrayList<String> buildTest(){
-        String[] tempList = new String[]{"12", "/", "(", "2", "+", ")", "1"};
-        ArrayList<String> tempExpress = new ArrayList<>();
-        for (String i: tempList){
-            tempExpress.add(i);
-        }
-        return tempExpress;
-    }
 
     public static void main(String[] args) {
         boolean running = true;
+       // String arg = args[0];
+        String arg;
+        try{
+            arg = args[0];
+        }catch (ArrayIndexOutOfBoundsException e){
+            Scanner equation = new Scanner(System.in);
+            System.out.println("Please enter your equation:");
+            arg = equation.nextLine();
+        }
+
 
         System.out.printf("   _____      _            _       _\n" +
                 "  / ____|    | |          | |     | |\n" +
@@ -38,21 +32,29 @@ public class Main {
 
             try {
                 String input = scanner.nextLine().strip();
+                Calculator mycalculator;
 
-                if (input.equals("x")) {
-                    System.out.println("Thank you for using Stacky!");
-                    running = false;
-                } else if (input.equals("1")) {
-                    InfixCalculator infix = new InfixCalculator(args, buildTest());
-                    System.out.println(infix.calculate());
-                } else if (input.equals("2")){
-                    PrefixCalculator prefix = new PrefixCalculator(args, buildTest());
-                    System.out.println(prefix.calculate());
-                } else if (input.equals("3")){
-                    PostfixCalculator postfix = new PostfixCalculator(args, buildTest());
-                    System.out.println(postfix.calculate());
+                switch (input) {
+                    case "x" -> {
+                        System.out.println("Thank you for using Stacky!");
+                        running = false;
+                    }
+                    case "1" -> {
+                        mycalculator = new InfixCalculator(arg);
+                       System.out.println(mycalculator.calculate());
+
+                    }
+                    case "2" -> {
+                        mycalculator = new PrefixCalculator(arg);
+                        System.out.println(mycalculator.calculate());
+                    }
+                    case "3" -> {
+                        mycalculator = new PostfixCalculator(arg);
+                        System.out.println(mycalculator.calculate());
+                    }
+                    default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
-            }catch (InputMismatchException | ArithmeticException e){
+            }catch (InputMismatchException| ArithmeticException | InvalidExpressionException e){
                 System.out.println("Something went wrong: " + e);
             }
         }

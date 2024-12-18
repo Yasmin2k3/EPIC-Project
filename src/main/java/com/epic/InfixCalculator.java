@@ -5,9 +5,9 @@ import java.util.*;
 public class InfixCalculator extends Calculator{
     private final List<String> expression;
 
-    public InfixCalculator(String[] arg, List<String> expression){
-        super(arg);
-        this.expression = expression;
+    public InfixCalculator(String expression){
+        super(expression);
+        this.expression = infixExpression;
     }
 
     //pops two numbers from our expression stack and operates the top operator on the operator stack.

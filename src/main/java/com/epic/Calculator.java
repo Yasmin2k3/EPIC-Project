@@ -10,8 +10,15 @@ import static java.lang.Double.POSITIVE_INFINITY;
 
 public abstract class Calculator {
     protected String operators = "+-*^/()";
+    protected List<String> infixExpression;
 
-    public Calculator(String[] args){
+    public Calculator(String argument){
+        try{
+            Parser parser = new Parser();
+            this.infixExpression = parser.parse(argument);
+          } catch (InvalidExpressionException e) {
+        throw new InvalidExpressionException("Invalid Expression: " + e);
+        }
     }
 
     //defines order of precedence
@@ -39,9 +46,21 @@ public abstract class Calculator {
             case"*" -> res = a*b;
             case"/" -> res = a/b;
         }
+        //testing if dividing by zero
         if (res == NEGATIVE_INFINITY || res == POSITIVE_INFINITY){
             throw new ArithmeticException("attempted to divide by zero");
         }
+        //testing for overflow
+     /*   if (res == Double.MAX_VALUE){
+            throw new ArithmeticException("Value equals maximum value of a double. This will likely result in an incorrect calculation");
+        }
+        //testing for underflow
+        else if (res == Double.MIN_VALUE || a == Double.MIN_VALUE || b == Double.MIN_VALUE){
+            throw new ArithmeticException("Value equals minimum value of a double. This will likely result in an incorrect calculation");
+        }
+
+      */
+
         return res;
     }
 
@@ -83,9 +102,15 @@ public abstract class Calculator {
         return new ArrayList<>(expressionStack);
     }
     
-    protected void printStack(String currentElement, Stack<String> operatorStack, Stack<Double> expressionStack) {
-        System.out.println("Current Element: " + currentElement);
+    protected void printStack(String key, Stack<String> operatorStack, Stack<Double> expressionStack) {
+        System.out.println("Current Element: " + key);
         System.out.println("Operator Stack: " + operatorStack);
+        System.out.println("Expression Stack: " + expressionStack);
+        System.out.println("-----------------------------------");
+    }
+
+    protected void printStack2(String key, Stack<Double> expressionStack) {
+        System.out.println("Current Element: " + key);
         System.out.println("Expression Stack: " + expressionStack);
         System.out.println("-----------------------------------");
     }
