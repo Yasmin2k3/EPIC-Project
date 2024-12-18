@@ -33,9 +33,7 @@ public class Parser
             }
             else
             {
-                System.out.println(arithmeticOperators.contains(expression.cur()));
                 char cur = expression.cur();
-                System.out.println(expression.cur());;
             }
         }
 
