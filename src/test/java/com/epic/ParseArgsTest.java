@@ -22,6 +22,6 @@ class ParseArgsTest {
     void testInvalidExpression() {
         String test = "(1.9 - * 5) * + 5^3";
         Parser parser = new Parser();
-        assertThrows(InvalidExpressionError.class, () -> parser.parse(test));
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(test));
     }
 }

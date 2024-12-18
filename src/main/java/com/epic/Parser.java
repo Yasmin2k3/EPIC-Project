@@ -9,7 +9,7 @@ public class Parser
 {
     HashSet<Character> arithmeticOperators = new HashSet<>(Arrays.asList('+', '-', '*', '/', '^'));
 
-    public List<String> parse(String input) throws InvalidExpressionError
+    public List<String> parse(String input) throws InvalidExpressionException
     {
         Expression expression = new Expression(input);
         while (expression.hasNext())
@@ -23,7 +23,7 @@ public class Parser
             else if (
                 !expression.isValidSequence()
             ) {
-                throw new InvalidExpressionError("Invalid expression: " + input);
+                throw new InvalidExpressionException("Invalid expression: " + input);
             }
             else if (
                     Character.isDigit(expression.cur()) ||
@@ -47,7 +47,7 @@ public class Parser
 
     private static class Expression
     {
-        private List<String> items = new ArrayList<>();
+        private final List<String> items = new ArrayList<>();
         private final String input;
         private int pos = 0; // index of the current position
 
@@ -136,12 +136,4 @@ public class Parser
         }
     }
 
-}
-
-class InvalidExpressionError extends RuntimeException
-{
-    InvalidExpressionError(String message)
-    {
-        super(message);
-    }
 }
