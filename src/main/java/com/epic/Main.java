@@ -12,18 +12,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    //some data to test with
-    private static ArrayList<String> buildTest(){
-        String[] tempList = new String[]{"12", "/", "(", "2", "+", ")", "1"};
-        ArrayList<String> tempExpress = new ArrayList<>();
-        for (String i: tempList){
-            tempExpress.add(i);
-        }
-        return tempExpress;
-    }
 
     public static void main(String[] args) {
         boolean running = true;
+        String arg = args[0];
 
         System.out.printf("   _____      _            _       _\n" +
                 "  / ____|    | |          | |     | |\n" +
@@ -46,20 +38,20 @@ public class Main {
                         running = false;
                     }
                     case "1" -> {
-                            mycalculator = new InfixCalculator(args, buildTest());
+                            mycalculator = new InfixCalculator(arg);
                             System.out.println(mycalculator.calculate());
                     }
                     case "2" -> {
-                        mycalculator = new PrefixCalculator(args, buildTest());
+                        mycalculator = new PrefixCalculator(arg);
                         System.out.println(mycalculator.calculate());
                     }
                     case "3" -> {
-                        mycalculator = new PostfixCalculator(args, buildTest());
+                        mycalculator = new PostfixCalculator(arg);
                         System.out.println(mycalculator.calculate());
                     }
                     default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
-            }catch (InputMismatchException | ArithmeticException e){
+            }catch (InputMismatchException| ArithmeticException | InvalidExpressionError e){
                 System.out.println("Something went wrong: " + e);
             }
         }

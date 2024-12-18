@@ -5,9 +5,9 @@ import java.util.*;
 public class PrefixCalculator extends Calculator {
     ArrayList<String> prefixExpression;
 
-    public PrefixCalculator(String[] arg, List<String> expression) {
-        super(arg);
-        this.prefixExpression = infixToPrefix(expression);
+    public PrefixCalculator(String expression) {
+        super(expression);
+        this.prefixExpression = infixToPrefix(infixExpression);
     }
 
     //Converts infix expression to a prefix one

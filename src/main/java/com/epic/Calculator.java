@@ -10,8 +10,15 @@ import static java.lang.Double.POSITIVE_INFINITY;
 
 public abstract class Calculator {
     protected String operators = "+-*^/()";
+    protected List<String> infixExpression;
 
-    public Calculator(String[] args){
+    public Calculator(String argument){
+        try{
+            Parser parser = new Parser();
+            this.infixExpression = parser.parse(argument);
+        } catch (InvalidExpressionError e) {
+            throw new InvalidExpressionError("Invalid Expression: " + e);
+        }
     }
 
     //defines order of precedence
@@ -45,11 +52,11 @@ public abstract class Calculator {
         }
         //testing for overflow
         if (res == Double.MAX_VALUE){
-            throw new RuntimeException("Value equals maximum value of a double. This will likely result in an incorrect calculation");
+            throw new ArithmeticException("Value equals maximum value of a double. This will likely result in an incorrect calculation");
         }
         //testing for underflow
         else if (res == Double.MIN_VALUE || a == Double.MIN_VALUE || b == Double.MIN_VALUE){
-            throw new RuntimeException("Value equals minimum value of a double. This will likely result in an incorrect calculation");
+            throw new ArithmeticException("Value equals minimum value of a double. This will likely result in an incorrect calculation");
         }
 
         return res;
