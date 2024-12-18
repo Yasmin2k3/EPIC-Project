@@ -44,11 +44,15 @@ public abstract class Calculator {
             case"+" -> res = a+b;
             case"-" -> res = a-b;
             case"*" -> res = a*b;
-            case"/" -> res = a/b;
-        }
-        //testing if dividing by zero
-        if (res == NEGATIVE_INFINITY || res == POSITIVE_INFINITY){
-            throw new ArithmeticException("attempted to divide by zero");
+            case"/" -> {
+                //testing if dividing by zero
+                if(b == 0){
+                    throw new ArithmeticException("attempted to divide by zero");
+                }
+                else{
+                    res = a/b;
+                }
+            }
         }
 
         return res;

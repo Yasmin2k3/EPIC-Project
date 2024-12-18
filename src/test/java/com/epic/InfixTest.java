@@ -11,14 +11,7 @@ public class InfixTest {
     void testDivideByZero(){
         String test = "(1.9 - 5) * -5^3 /0";
         InfixCalculator calculator = new InfixCalculator(test);
-        String expected = "java.lang.ArithmeticException: attempted to divide by zero";
-        String actual;
-        try{
-            actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
-            actual = String.valueOf(e);
-        }
-        assertEquals(expected, actual);
+        assertThrows(ArithmeticException.class, () -> calculator.calculate());
     }
 
     @Test
@@ -29,7 +22,7 @@ public class InfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
+        }catch( ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
@@ -43,7 +36,21 @@ public class InfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
+        }catch( ArithmeticException | InvalidExpressionException e){
+            actual = String.valueOf(e);
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void singleNumber(){
+        String test = "2";
+        InfixCalculator calculator = new InfixCalculator(test);
+        String expected = "2.0";
+        String actual;
+        try{
+            actual = String.valueOf(calculator.calculate());
+        }catch( ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
