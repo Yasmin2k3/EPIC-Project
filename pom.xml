@@ -47,6 +47,19 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0</version> <!-- Use a version compatible with JUnit 5 -->
         </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.epic.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 </project>
