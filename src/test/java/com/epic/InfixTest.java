@@ -15,7 +15,7 @@ public class InfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
+        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
@@ -29,7 +29,7 @@ public class InfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
+        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
@@ -43,7 +43,7 @@ public class InfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionError e){
+        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
