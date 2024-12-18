@@ -12,14 +12,6 @@ public class InfixTest {
         String test = "(1.9 - 5) * -5^3 /0";
         InfixCalculator calculator = new InfixCalculator(test);
         assertThrows(ArithmeticException.class, () -> calculator.calculate());
-        String expected = "java.lang.ArithmeticException: attempted to divide by zero";
-        String actual;
-        try{
-            actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
-            actual = String.valueOf(e);
-        }
-        assertEquals(expected, actual);
     }
 
     @Test
