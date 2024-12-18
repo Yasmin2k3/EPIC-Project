@@ -3,9 +3,9 @@ package com.epic;
 import java.util.*;
 
 public class PrefixCalculator extends Calculator {
-    ArrayList<String> prefixExpression;
+    ArrayList<String> prefixExpression; //Array for prefix expression
 
-    public PrefixCalculator(String expression) {
+    public PrefixCalculator(String expression) { //constructor 
         super(expression);
         this.prefixExpression = infixToPrefix(infixExpression);
     }
