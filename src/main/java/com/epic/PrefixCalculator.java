@@ -54,6 +54,7 @@ public class PrefixCalculator extends Calculator {
                 expressionStack.push(result);
             }
             printStack(key, expressionStack);
+            //call continueOrExit untill last iteration of loop
            if(i>0) continueOrExit();
 
         }
