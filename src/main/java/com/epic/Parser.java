@@ -38,7 +38,7 @@ public class Parser
             }
             else
             {
-                System.out.println("Couldnt parse expression: " + expression.cur());
+                System.out.println("Couldn't parse expression: " + expression.cur());
             }
         }
 
@@ -79,6 +79,10 @@ public class Parser
             return input.charAt(posNextIndex);
         }
 
+        /*
+        * Checks if the current expression is a valid mathematical expression
+        * @return true if invalid mathematical expression (e.g 5-*3 -> false, 5*-3 -> true)
+        * */
         public boolean isValidSequence() {
             if ((
                     cur() == '-' && next() == '*' ||
@@ -88,9 +92,10 @@ public class Parser
             ) {
                 return false;
             }
-
             else
+            {
                 return true;
+            }
         }
 
         public char prev()
