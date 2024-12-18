@@ -28,7 +28,22 @@ class ParseArgsTest {
         String input = "(1.9 - * 5) * + 5^3";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
-
+    @Test
+    void missingBase() {
+        String input = "^3";
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+    @Test
+    void missingExponent() {
+        String input = "5^";
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+    @Test
+    void invalidOperator() {
+        String input = "1_7";
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+      
     @Test
     void unmatchedParenthesis() {
         String input = "(1";
