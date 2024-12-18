@@ -16,7 +16,7 @@ public class PostfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
+        }catch( ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
@@ -30,7 +30,7 @@ public class PostfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
+        }catch( ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
@@ -44,7 +44,7 @@ public class PostfixTest {
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
-        }catch(InputMismatchException | ArithmeticException | InvalidExpressionException e){
+        }catch( ArithmeticException | InvalidExpressionException e){
             actual = String.valueOf(e);
         }
         assertEquals(expected, actual);
