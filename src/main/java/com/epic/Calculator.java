@@ -50,14 +50,6 @@ public abstract class Calculator {
         if (res == NEGATIVE_INFINITY || res == POSITIVE_INFINITY){
             throw new ArithmeticException("attempted to divide by zero");
         }
-        //testing for overflow
-        if (res == Double.MAX_VALUE){
-            throw new ArithmeticException("Value equals maximum value of a double. This will likely result in an incorrect calculation");
-        }
-        //testing for underflow
-        else if (res == Double.MIN_VALUE || a == Double.MIN_VALUE || b == Double.MIN_VALUE){
-            throw new ArithmeticException("Value equals minimum value of a double. This will likely result in an incorrect calculation");
-        }
 
         return res;
     }
