@@ -16,13 +16,6 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         String arg;
-        try {
-            arg = args[0];
-        } catch (ArrayIndexOutOfBoundsException e){
-            Scanner equation = new Scanner(System.in);
-            System.out.println("Please enter your equation:");
-            arg = equation.nextLine();
-        }
 
 
         System.out.printf("   _____      _            _       _\n" +
@@ -31,6 +24,14 @@ public class Main {
                 " | |    / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n" +
                 " | |___| (_| | | (__| |_| | | (_| | || (_) | |\n" +
                 "  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n\n");
+
+        try {
+            arg = args[0];
+        } catch (ArrayIndexOutOfBoundsException e){
+            Scanner equation = new Scanner(System.in);
+            System.out.println("Please enter your equation:");
+            arg = equation.nextLine();
+        }
 
         while(running){
             Scanner scanner = new Scanner(System.in);

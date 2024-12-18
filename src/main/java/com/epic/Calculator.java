@@ -103,8 +103,5 @@ public abstract class Calculator {
         System.out.println("-----------------------------------");
     }
 
-    public void printCalculation(String key, Stack<String> operatorStack, Stack<String> expressionStack){
-    }
-
     public abstract double calculate();
 }
