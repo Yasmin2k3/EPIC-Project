@@ -2,28 +2,28 @@ package com.epic;
 
 public class ExpressionContextManager
 {
-    String inputExpression;
-    int pos;
+    protected final String input;
+    private int pos;
 
-    ExpressionContextManager(String expression) throws IllegalArgumentException
+    ExpressionContextManager(String expression) throws InvalidExpressionException
     {
-        if (expression != null || expression != "")
-            this.inputExpression = expression;
+        if (expression != null || expression == "")
+            this.input = expression.replaceAll("\\s+", "");
         else
-            throw new IllegalArgumentException("Expression can not be null");
+            throw new InvalidExpressionException(expression);
     }
 
     public char next()
     {
         int nextPos = this.pos + 1;
-        if (nextPos >= this.inputExpression.length())
+        if (nextPos >= this.input.length())
             return '\0';
-        return inputExpression.charAt(nextPos);
+        return input.charAt(nextPos);
     }
 
     public char cur()
     {
-        return inputExpression.charAt(pos);
+        return input.charAt(pos);
     }
 
     public char prev()
@@ -31,12 +31,12 @@ public class ExpressionContextManager
         int prevPos = this.pos - 1;
         if (prevPos < 0)
             return '\0';
-        return inputExpression.charAt(prevPos);
+        return input.charAt(prevPos);
     }
 
     public boolean hasNext()
     {
-        return (this.pos < this.inputExpression.length());
+        return (this.pos < this.input.length());
     }
 
     public void incrementPos()

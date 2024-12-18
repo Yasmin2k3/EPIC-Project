@@ -33,7 +33,9 @@ public class Parser
             }
             else
             {
-                throw new InvalidExpressionException("Invalid expression: " + input);
+                System.out.println(arithmeticOperators.contains(expression.cur()));
+                char cur = expression.cur();
+                System.out.println(expression.cur());;
             }
         }
 
