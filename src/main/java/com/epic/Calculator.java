@@ -93,7 +93,15 @@ public abstract class Calculator {
         System.out.println("Expression Stack: " + expressionStack);
         System.out.println("-----------------------------------");
 
-        // A break
+
+    }
+
+    protected void printStack(String currentElement, Stack<Double> expressionStack) {
+        // Delegate to the 3-argument method, passing null for the operatorStack
+        printStack(currentElement, null, expressionStack);
+    }
+
+    protected void continueOrExit() {
         System.out.println("Press Enter to continue or type 'x' to exit.");
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
@@ -103,10 +111,6 @@ public abstract class Calculator {
         }
     }
 
-    protected void printStack(String currentElement, Stack<Double> expressionStack) {
-        // Delegate to the 3-argument method, passing null for the operatorStack
-        printStack(currentElement, null, expressionStack);
-    }
 
       /*  System.out.println("-----------------------------------");
         System.out.println("Current Element: " + key);

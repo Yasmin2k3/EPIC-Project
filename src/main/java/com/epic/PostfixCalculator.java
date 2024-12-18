@@ -34,6 +34,8 @@ public class PostfixCalculator extends Calculator{
         }
 
         //return the final value
+        System.out.println("Final value: " + expressionStack.peek());
+        System.out.println("-----------------------------------\n\n");
         return expressionStack.pop();
     }
 }

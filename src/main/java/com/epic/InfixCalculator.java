@@ -58,6 +58,9 @@ public class InfixCalculator extends Calculator{
             popAndEval(operatorStack.pop(), expressionStack);
         }
 
+        //prints final value
+        System.out.println("Final value: " + expressionStack.peek());
+        System.out.println("-----------------------------------\n\n");
         return expressionStack.peek();
     }
 }

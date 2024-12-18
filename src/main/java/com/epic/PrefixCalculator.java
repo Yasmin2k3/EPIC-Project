@@ -54,12 +54,12 @@ public class PrefixCalculator extends Calculator {
                 expressionStack.push(result);
             }
             printStack(key, expressionStack);
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
+           if(i>0) continueOrExit();
 
         }
-        //returns final value which gets printed in main
-
+        //prints final value
+        System.out.println("Final value: " + expressionStack.peek());
+        System.out.println("-----------------------------------\n\n");
         return expressionStack.pop();
     }
 }
