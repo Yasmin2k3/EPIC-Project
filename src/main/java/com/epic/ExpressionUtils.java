@@ -15,6 +15,7 @@ public class ExpressionUtils
                 || hasInvalidVocabulary(input)
                 || hasUnmatchedParenthesis(input)
                 || hasInvalidExponentialOperator(input)
+                || hasOperandWithUnmatchedValue(input)
         );
     }
 
