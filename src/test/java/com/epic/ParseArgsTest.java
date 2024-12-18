@@ -16,7 +16,6 @@ class ParseArgsTest
         String input = "(1.9 - 5) * -5^3";
         Parser parser = new Parser();
         List<String> expected = Arrays.asList("(", "1.9", "-", "5", ")", "*", "-5", "^", "3");
-        Parser parser = new Parser();
         List<String> actual = parser.parse(input);
         assertEquals(expected, actual);
     }
