@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
-import static java.lang.Double.NEGATIVE_INFINITY;
-import static java.lang.Double.POSITIVE_INFINITY;
-
 public abstract class Calculator {
     protected String operators = "+-*^/()";
     protected List<String> infixExpression;
