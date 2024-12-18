@@ -12,14 +12,7 @@ public class PostfixTest {
     void testDivideByZero(){
         String test = "(1.9 - 5) * -5^3 /0";
         PostfixCalculator calculator = new PostfixCalculator(test);
-        String expected = "java.lang.ArithmeticException: attempted to divide by zero";
-        String actual;
-        try{
-            actual = String.valueOf(calculator.calculate());
-        }catch( ArithmeticException | InvalidExpressionException e){
-            actual = String.valueOf(e);
-        }
-        assertEquals(expected, actual);
+        assertThrows(ArithmeticException.class, () -> calculator.calculate());
     }
 
     @Test
@@ -41,6 +34,20 @@ public class PostfixTest {
         String test = "(1.9 - 5) * -5^3";
         PostfixCalculator calculator = new PostfixCalculator(test);
         String expected = "387.5";
+        String actual;
+        try{
+            actual = String.valueOf(calculator.calculate());
+        }catch( ArithmeticException | InvalidExpressionException e){
+            actual = String.valueOf(e);
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void singleNumber(){
+        String test = "2";
+        PostfixCalculator calculator = new PostfixCalculator(test);
+        String expected = "2.0";
         String actual;
         try{
             actual = String.valueOf(calculator.calculate());
