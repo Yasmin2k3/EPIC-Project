@@ -1,5 +1,12 @@
-package com.epic;
-
+package com.epic;/*
+Title?:
+   _____      _            _       _
+  / ____|    | |          | |     | |
+ | |     __ _| | ___ _   _| | __ _| |_ ___  _ __
+ | |    / _` | |/ __| | | | |/ _` | __/ _ \| '__|
+ | |___| (_| | | (__| |_| | | (_| | || (_) | |
+  \_____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
+ */
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,11 +15,10 @@ public class Main {
 
     public static void main(String[] args) {
         boolean running = true;
-       // String arg = args[0];
         String arg;
-        try{
+        try {
             arg = args[0];
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e){
             Scanner equation = new Scanner(System.in);
             System.out.println("Please enter your equation:");
             arg = equation.nextLine();
@@ -40,9 +46,8 @@ public class Main {
                         running = false;
                     }
                     case "1" -> {
-                        mycalculator = new InfixCalculator(arg);
-                       System.out.println(mycalculator.calculate());
-
+                            mycalculator = new InfixCalculator(arg);
+                            System.out.println(mycalculator.calculate());
                     }
                     case "2" -> {
                         mycalculator = new PrefixCalculator(arg);

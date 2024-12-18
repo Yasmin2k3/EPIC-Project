@@ -16,18 +16,18 @@ public class Parser
         {
             if (
                     expression.cur() == '(' ||
-                            expression.cur() == ')')
+                    expression.cur() == ')')
             {
                 expression.consume();
             }
             else if (
-                    !expression.isValidSequence()
+                !expression.isValidSequence()
             ) {
                 throw new InvalidExpressionException("Invalid expression: " + input);
             }
             else if (
                     Character.isDigit(expression.cur()) ||
-                            (expression.cur() == '-' && arithmeticOperators.contains(expression.prev()))
+                    (expression.cur() == '-' && arithmeticOperators.contains(expression.prev()))
             ) {
                 expression.consumeNumber();
             }
@@ -80,9 +80,9 @@ public class Parser
         }
 
         /*
-         * Checks if the current expression is a valid mathematical expression
-         * @return true if invalid mathematical expression (e.g 5-*3 -> false, 5*-3 -> true)
-         * */
+        * Checks if the current expression is a valid mathematical expression
+        * @return true if invalid mathematical expression (e.g 5-*3 -> false, 5*-3 -> true)
+        * */
         public boolean isValidSequence() {
             if ((
                     cur() == '-' && next() == '*' ||
