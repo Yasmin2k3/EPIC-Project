@@ -1,6 +1,9 @@
 package com.epic;
 
-public class ExpressionUtils
+/**
+ * Used to check expressions for invalid mathematical.
+ */
+public class ExpressionValidationUtils
 {
     /*
      * Checks if the current expression is a valid mathematical expression
@@ -19,7 +22,7 @@ public class ExpressionUtils
         );
     }
 
-    public static boolean hasIllegalOperatorSequence(String input)
+    protected static boolean hasIllegalOperatorSequence(String input)
     {
         return (
                 input.contains("-*")
@@ -30,24 +33,24 @@ public class ExpressionUtils
         );
     }
 
-    public static boolean hasConsecutiveDecimalPoints(String input)
+    protected static boolean hasConsecutiveDecimalPoints(String input)
     {
         return input.contains("..");
     }
 
-    public static boolean hasEmptyParenthesis(String input)
+    protected static boolean hasEmptyParenthesis(String input)
     {
         return input.contains("()");
     }
 
-    public static boolean hasInvalidVocabulary(String input)
+    protected static boolean hasInvalidVocabulary(String input)
     {
         return input.matches("[a-zA-Z]");
     }
 
-    public static boolean hasUnmatchedParenthesis(String input)
+    protected static boolean hasUnmatchedParenthesis(String input)
     {
-        ExpressionContextManager ctx = new ExpressionContextManager(input);
+        ExpressionCursor ctx = new ExpressionCursor(input);
         int openCount = 0;
         int closedCount = 0;
 
@@ -61,34 +64,34 @@ public class ExpressionUtils
             {
                 closedCount++;
             }
-            ctx.incrementPos();
+            ctx.incrementCur();
         }
 
         return (openCount != closedCount);
     }
 
-    public static boolean hasInvalidExponentialOperator(String input)
+    protected static boolean hasInvalidExponentialOperator(String input)
     {
-        ExpressionContextManager ctx = new ExpressionContextManager(input);
+        ExpressionCursor ctx = new ExpressionCursor(input);
 
         while (ctx.hasNext())
         {
             if (ctx.cur() == '^' && (!Character.isDigit(ctx.prev()) || !Character.isDigit(ctx.next())))
                 return true;
-            ctx.incrementPos();
+            ctx.incrementCur();
         }
         return false;
     }
 
-    public static boolean hasOperandWithUnmatchedValue(String input)
+    protected static boolean hasOperandWithUnmatchedValue(String input)
     {
-        ExpressionContextManager ctx = new ExpressionContextManager(input);
+        ExpressionCursor ctx = new ExpressionCursor(input);
 
         while (ctx.hasNext())
         {
             if (Character.isDigit(ctx.prev()) && (ctx.cur() == '-' || ctx.cur() == '+') && (!Character.isDigit(ctx.next())))
                 return true;
-            ctx.incrementPos();
+            ctx.incrementCur();
         }
         return false;
     }

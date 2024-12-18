@@ -7,11 +7,11 @@ import java.util.InputMismatchException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PostfixTest {
-
     @Test
     void testDivideByZero(){
         String test = "(1.9 - 5) * -5^3 /0";
         PostfixCalculator calculator = new PostfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         assertThrows(ArithmeticException.class, () -> calculator.calculate());
     }
 
@@ -19,6 +19,7 @@ public class PostfixTest {
     void testWorks(){
         String test = "(1.9 - 5) * 5^3";
         PostfixCalculator calculator = new PostfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "-387.5";
         String actual;
         try{
@@ -33,6 +34,7 @@ public class PostfixTest {
     void testWorksWithNegativeNumber(){
         String test = "(1.9 - 5) * -5^3";
         PostfixCalculator calculator = new PostfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "387.5";
         String actual;
         try{
@@ -47,6 +49,7 @@ public class PostfixTest {
     void singleNumber(){
         String test = "2";
         PostfixCalculator calculator = new PostfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "2.0";
         String actual;
         try{

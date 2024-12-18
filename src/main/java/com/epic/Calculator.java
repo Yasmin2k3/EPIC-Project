@@ -5,6 +5,12 @@ import java.util.*;
 public abstract class Calculator {
     protected String operators = "+-*^/()";
     protected List<String> infixExpression;
+    private boolean skipExitCheck;
+
+
+    public void setSkipExitCheck(boolean skipExitCheck) {
+        this.skipExitCheck = skipExitCheck;
+    }
 
     public Calculator(String argument) {
         try {
@@ -102,9 +108,13 @@ public abstract class Calculator {
     }
 
     protected void continueOrExit() {
+        if (this.skipExitCheck) {
+            return;
+        }
         System.out.println("Press Enter to continue or type 'x' to exit.");
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
+
         if (choice.equalsIgnoreCase("x")) {
             System.out.println("Exiting...");
             System.exit(0);

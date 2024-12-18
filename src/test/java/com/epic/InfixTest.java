@@ -11,6 +11,7 @@ public class InfixTest {
     void testDivideByZero(){
         String test = "(1.9 - 5) * -5^3 /0";
         InfixCalculator calculator = new InfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         assertThrows(ArithmeticException.class, () -> calculator.calculate());
     }
 
@@ -18,6 +19,7 @@ public class InfixTest {
     void testWorks(){
         String test = "(1.9 - 5) * 5^3";
         InfixCalculator calculator = new InfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "-387.5";
         String actual;
         try{
@@ -32,6 +34,7 @@ public class InfixTest {
     void testWorksWithNegativeNumber(){
         String test = "(1.9 - 5) * -5^3";
         InfixCalculator calculator = new InfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "387.5";
         String actual;
         try{
@@ -46,6 +49,7 @@ public class InfixTest {
     void singleNumber(){
         String test = "2";
         InfixCalculator calculator = new InfixCalculator(test);
+        calculator.setSkipExitCheck(true);
         String expected = "2.0";
         String actual;
         try{

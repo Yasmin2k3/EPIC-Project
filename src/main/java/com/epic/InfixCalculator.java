@@ -10,6 +10,7 @@ public class InfixCalculator extends Calculator{
         this.expression = infixExpression;
     }
 
+
     //pops two numbers from our expression stack and operates the top operator on the operator stack.
     private void popAndEval(String key, Stack<Double> expressionStack){
         double val1 = expressionStack.pop();
