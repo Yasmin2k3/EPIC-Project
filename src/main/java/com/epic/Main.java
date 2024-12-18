@@ -38,19 +38,26 @@ public class Main {
 
             try {
                 String input = scanner.nextLine().strip();
+                Calculator mycalculator;
 
-                if (input.equals("x")) {
-                    System.out.println("Thank you for using Stacky!");
-                    running = false;
-                } else if (input.equals("1")) {
-                    InfixCalculator infix = new InfixCalculator(args, buildTest());
-                    System.out.println(infix.calculate());
-                } else if (input.equals("2")){
-                    PrefixCalculator prefix = new PrefixCalculator(args, buildTest());
-                    System.out.println(prefix.calculate());
-                } else if (input.equals("3")){
-                    PostfixCalculator postfix = new PostfixCalculator(args, buildTest());
-                    System.out.println(postfix.calculate());
+                switch (input) {
+                    case "x" -> {
+                        System.out.println("Thank you for using Stacky!");
+                        running = false;
+                    }
+                    case "1" -> {
+                            mycalculator = new InfixCalculator(args, buildTest());
+                            System.out.println(mycalculator.calculate());
+                    }
+                    case "2" -> {
+                        mycalculator = new PrefixCalculator(args, buildTest());
+                        System.out.println(mycalculator.calculate());
+                    }
+                    case "3" -> {
+                        mycalculator = new PostfixCalculator(args, buildTest());
+                        System.out.println(mycalculator.calculate());
+                    }
+                    default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
             }catch (InputMismatchException | ArithmeticException e){
                 System.out.println("Something went wrong: " + e);
