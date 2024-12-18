@@ -1,6 +1,6 @@
 package com.epic;
 
-class InvalidExpressionException extends RuntimeException
+public class InvalidExpressionException extends RuntimeException
 {
     InvalidExpressionException(String message)
     {
