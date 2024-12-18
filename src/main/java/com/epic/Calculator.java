@@ -89,11 +89,11 @@ public abstract class Calculator {
     protected void printStack(String currentElement, Stack<String> operatorStack, Stack<Double> expressionStack) {
         System.out.println("-----------------------------------");
         System.out.println("Current Element: " + currentElement);
-        System.out.println("Operator Stack: " + operatorStack);
+        if(operatorStack != null){
+            System.out.println("Operator Stack: " + operatorStack);
+        }
         System.out.println("Expression Stack: " + expressionStack);
         System.out.println("-----------------------------------");
-
-
     }
   
     protected void printStack(String currentElement, Stack<Double> expressionStack) {
