@@ -16,8 +16,8 @@ public abstract class Calculator {
         try{
             Parser parser = new Parser();
             this.infixExpression = parser.parse(argument);
-        } catch (InvalidExpressionError e) {
-            throw new InvalidExpressionError("Invalid Expression: " + e);
+        } catch (InvalidExpressionException e) {
+            throw new InvalidExpressionException("Invalid Expression: " + e);
         }
     }
 

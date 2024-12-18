@@ -15,7 +15,15 @@ public class Main {
 
     public static void main(String[] args) {
         boolean running = true;
-        String arg = args[0];
+        String arg;
+        try{
+            arg = args[0];
+        }catch (ArrayIndexOutOfBoundsException e){
+            Scanner equation = new Scanner(System.in);
+            System.out.println("Please enter your equation:");
+            arg = equation.nextLine();
+        }
+
 
         System.out.printf("   _____      _            _       _\n" +
                 "  / ____|    | |          | |     | |\n" +
@@ -51,7 +59,7 @@ public class Main {
                     }
                     default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
-            }catch (InputMismatchException| ArithmeticException | InvalidExpressionError e){
+            }catch (InputMismatchException| ArithmeticException | InvalidExpressionException e){
                 System.out.println("Something went wrong: " + e);
             }
         }
