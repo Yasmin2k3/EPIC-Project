@@ -27,6 +27,8 @@ public class InfixCalculator extends Calculator{
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: expression){
+            int count = 0;
+            count++;
             //Checks if current key is one of our operators in Calculator class
             if(operators.contains(key)){
                 if(key.equals("(")){
@@ -49,8 +51,7 @@ public class InfixCalculator extends Calculator{
                 expressionStack.push(Double.valueOf(key));
             }
             printStack(key, operatorStack, expressionStack);
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
+            if(!(count<expression.size())) continueOrExit();
         }
 
         //while our operator stack isn't empty, finish out the rest of the operations.

@@ -40,7 +40,7 @@ public class Main {
                     }
                     case "1" -> {
                         mycalculator = new InfixCalculator(arg);
-                       System.out.println(mycalculator.calculate());
+                       mycalculator.calculate();
 
                     }
                     case "2" -> {
@@ -49,7 +49,7 @@ public class Main {
                     }
                     case "3" -> {
                         mycalculator = new PostfixCalculator(arg);
-                        System.out.println(mycalculator.calculate());
+                        mycalculator.calculate();
                     }
                     default -> System.out.println("Wrong input, please input 1, 2, 3 or x");
                 }
