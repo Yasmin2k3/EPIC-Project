@@ -8,6 +8,15 @@ Clone this repository with the following git commamnd.
 git clone git@github.com:Yasmin2k3/EPIC-Project.git
 ----
 
+== Build and run the project
+
+[source, bash]
+----
+mvn clean install
+java -jar target/epic-1.0-SNAPSHOT.jar
+----
+
+
 == Use of Maven
 We used link:https://maven.apache.org/[Apache Maven] to manage some of the development lifecycle of this project. It simplifies and strengthens the development of this project, providing an all-in-one tool to manage dependencies, tests, builds etc.
 
