@@ -11,6 +11,9 @@ public class Parser
 
     public List<String> parse(String input) throws InvalidExpressionException
     {
+        if(!ExpressionUtils.isValidExpression(input)){
+            throw new InvalidExpressionException("Invalid Expression: ");
+        }
         Expression expression = new Expression(input);
         while (expression.hasNext())
         {

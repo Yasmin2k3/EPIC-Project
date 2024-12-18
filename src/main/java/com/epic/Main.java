@@ -1,5 +1,12 @@
-package com.epic;
-import java.util.ArrayList;
+package com.epic;/*
+Title?:
+   _____      _            _       _
+  / ____|    | |          | |     | |
+ | |     __ _| | ___ _   _| | __ _| |_ ___  _ __
+ | |    / _` | |/ __| | | | |/ _` | __/ _ \| '__|
+ | |___| (_| | | (__| |_| | | (_| | || (_) | |
+  \_____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,11 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
         boolean running = true;
-       // String arg = args[0];
         String arg;
 
 
-        System.out.printf("   _____      _            _       _\n" +
+        System.out.print("   _____      _            _       _\n" +
                 "  / ____|    | |          | |     | |\n" +
                 " | |     __ _| | ___ _   _| | __ _| |_ ___  _ __\n" +
                 " | |    / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n" +
@@ -41,8 +47,7 @@ public class Main {
                     }
                     case "1" -> {
                         mycalculator = new InfixCalculator(arg);
-                       mycalculator.calculate();
-
+                        mycalculator.calculate();
                     }
                     case "2" -> {
                         mycalculator = new PrefixCalculator(arg);
@@ -58,6 +63,5 @@ public class Main {
                 System.out.println("Something went wrong: " + e);
             }
         }
-
     }
 }

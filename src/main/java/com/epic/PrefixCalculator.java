@@ -3,9 +3,9 @@ package com.epic;
 import java.util.*;
 
 public class PrefixCalculator extends Calculator {
-    ArrayList<String> prefixExpression;
+    ArrayList<String> prefixExpression; //Array for prefix expression
 
-    public PrefixCalculator(String expression) {
+    public PrefixCalculator(String expression) { //constructor 
         super(expression);
         this.prefixExpression = infixToPrefix(infixExpression);
     }
@@ -54,6 +54,7 @@ public class PrefixCalculator extends Calculator {
                 expressionStack.push(result);
             }
             printStack(key, expressionStack);
+            //call continueOrExit untill last iteration of loop
            if(i>0) continueOrExit();
 
         }

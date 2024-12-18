@@ -28,6 +28,7 @@ public class InfixCalculator extends Calculator{
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: expression){
+            //counter for the continueOrExit method.
             int count = 0;
             count++;
             //Checks if current key is one of our operators in Calculator class
@@ -52,6 +53,8 @@ public class InfixCalculator extends Calculator{
                 expressionStack.push(Double.valueOf(key));
             }
             printStack(key, operatorStack, expressionStack);
+            
+            //if loop is not finished, call continueOrExit.
             if(!(count<expression.size())) continueOrExit();
         }
 
