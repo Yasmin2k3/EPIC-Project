@@ -32,7 +32,7 @@ public class PostfixCalculator extends Calculator{
                 expressionStack.push(operate(key, val2, val1));
             }
             printStack(key, expressionStack);
-            //if loop is finished, call continueOrExit
+            //if loop is not finished, call continueOrExit
             if(!(count == postfixExpression.size())) {
                 continueOrExit();
             }
