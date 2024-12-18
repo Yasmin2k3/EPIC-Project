@@ -18,6 +18,7 @@ public class PostfixCalculator extends Calculator{
         Stack<Double> expressionStack = new Stack<>();
 
         for(String key: postfixExpression){
+            //counter for continueOrExit
             int count = 0;
             count ++;
             //if what we are currently on can be converted to a double: push it to expression stack
@@ -31,12 +32,13 @@ public class PostfixCalculator extends Calculator{
                 expressionStack.push(operate(key, val2, val1));
             }
             printStack(key, expressionStack);
+            //if loop is finished, call continueOrExit
             if(!(count == postfixExpression.size())) {
                 continueOrExit();
             }
         }
 
-        //return the final value
+        //print the final value
         System.out.println("Final value: " + expressionStack.peek());
         System.out.println("-----------------------------------\n\n");
         return expressionStack.pop();
