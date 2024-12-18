@@ -53,12 +53,9 @@ public class PrefixCalculator extends Calculator {
                 double result = operate(key, val1, val2);
                 expressionStack.push(result);
             }
-            printStack2(key, expressionStack);
-            //a break
-            System.out.println("Press Enter to continue or type 'x' to exit.");
+            printStack(key, expressionStack);
             Scanner scanner = new Scanner(System.in);
-            //String choice = scanner.nextLine();
-            scanner.close();
+            scanner.nextLine();
 
         }
         //returns final value which gets printed in main

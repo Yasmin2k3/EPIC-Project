@@ -1,9 +1,6 @@
 package com.epic;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class PostfixCalculator extends Calculator{
     ArrayList<String> postfixExpression;
@@ -31,6 +28,9 @@ public class PostfixCalculator extends Calculator{
 
                 expressionStack.push(operate(key, val2, val1));
             }
+            printStack(key, expressionStack);
+            Scanner scanner = new Scanner(System.in);
+            scanner.nextLine();
         }
 
         //return the final value

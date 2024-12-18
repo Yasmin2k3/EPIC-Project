@@ -48,7 +48,9 @@ public class InfixCalculator extends Calculator{
             else{
                 expressionStack.push(Double.valueOf(key));
             }
-
+            printStack(key, operatorStack, expressionStack);
+            Scanner scanner = new Scanner(System.in);
+            scanner.nextLine();
         }
 
         //while our operator stack isn't empty, finish out the rest of the operations.
