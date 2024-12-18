@@ -6,11 +6,16 @@ import static org.junit.Assert.assertTrue;
 
 public class ExpressionUtilsTest {
     @Test
-    void testIsValidSequence1()
+    void testIsValidExpression1()
     {
-        assertTrue(ExpressionUtils.isValidSequence("(1.9 - 5) * -5^3"));
+        assertTrue(ExpressionUtils.isValidExpression("(1.9 - 5) * -5^3"));
     }
 
+    @Test
+    void testIsValidExpression2()
+    {
+        assertTrue(ExpressionUtils.isValidExpression("(1.9 - 5) * -5^3 /0"));
+    }
     @Test
     void hasInvalidExponentialOperatorNoBase()
     {
@@ -80,4 +85,5 @@ public class ExpressionUtilsTest {
     {
         assertTrue(ExpressionUtils.hasOperandWithUnmatchedValue("22-"));
     }
+
 }

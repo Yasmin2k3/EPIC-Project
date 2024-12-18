@@ -6,7 +6,7 @@ public class ExpressionUtils
      * Checks if the current expression is a valid mathematical expression
      * @return true if invalid mathematical expression (e.g 5-*3 -> false, 5*-3 -> true)
      * */
-    public static boolean isValidSequence(String input)
+    public static boolean isValidExpression(String input)
     {
         return !(
                 hasIllegalOperatorSequence(input)
@@ -86,7 +86,7 @@ public class ExpressionUtils
 
         while (ctx.hasNext())
         {
-            if (Character.isDigit(ctx.prev()) && (ctx.next() == '-' || ctx.next() == '+'))
+            if (Character.isDigit(ctx.prev()) && (ctx.cur() == '-' || ctx.cur() == '+') && (!Character.isDigit(ctx.next())))
                 return true;
             ctx.incrementPos();
         }
