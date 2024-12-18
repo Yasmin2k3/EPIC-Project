@@ -85,7 +85,8 @@ public abstract class Calculator {
 
         return new ArrayList<>(expressionStack);
     }
-
+    
+//prints the current element being worked on and the stack contents.
     protected void printStack(String currentElement, Stack<String> operatorStack, Stack<Double> expressionStack) {
         System.out.println("-----------------------------------");
         System.out.println("Current Element: " + currentElement);
@@ -95,12 +96,14 @@ public abstract class Calculator {
         System.out.println("Expression Stack: " + expressionStack);
         System.out.println("-----------------------------------");
     }
-  
+    
+  //overloaded method for 2 parametres 
     protected void printStack(String currentElement, Stack<Double> expressionStack) {
         // Delegate to the 3-argument method, passing null for the operatorStack
         printStack(currentElement, null, expressionStack);
     }
-
+    
+//user can press enter to continue, or press x to exit
     protected void continueOrExit() {
         System.out.println("Press Enter to continue or type 'x' to exit.");
         Scanner scanner = new Scanner(System.in);
@@ -110,18 +113,6 @@ public abstract class Calculator {
             System.exit(0);
         }
     }
-
-
-      /*  System.out.println("-----------------------------------");
-        System.out.println("Current Element: " + key);
-        System.out.println("Expression Stack: " + expressionStack);
-        System.out.println("-----------------------------------");
-        //a break
-        System.out.println("Press Enter to continue or type 'x' to exit.");
-        Scanner scanner = new Scanner(System.in);
-        String choice = scanner.nextLine();
-*/
-
 
 
         public abstract double calculate ();
