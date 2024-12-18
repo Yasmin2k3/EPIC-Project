@@ -29,18 +29,35 @@ class ParseArgsTest {
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
     @Test
-    void testInvalidExpression1() {
-        String input = "(4+4)+^3";
+    void missingBase() {
+        String input = "^3";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
     @Test
-    void testInvalidExpression2() {
-        String input = "4+23-5^";
+    void missingExponent() {
+        String input = "5^";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
     @Test
-    void testInvalidExpression3() {
-        String input = "2/(5-3)+1_7";
+    void invalidOperator() {
+        String input = "1_7";
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+      
+    @Test
+    void unmatchedParenthesis() {
+        String input = "(1";
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+
+    @Test
+    void invalidVocabulary() {
+        String input = "a";
+        assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
+    }
+
+    @Test
+    void operandWithUnmatchedValue() {
+        String input = "22-";
     }
 }
