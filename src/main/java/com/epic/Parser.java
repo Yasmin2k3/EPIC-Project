@@ -38,7 +38,7 @@ public class Parser
             }
             else
             {
-                System.out.println("Couldn't parse expression: " + expression.cur());
+                throw new InvalidExpressionException("Invalid expression: " + input);
             }
         }
 

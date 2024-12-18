@@ -16,9 +16,9 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         String arg;
-        try{
+        try {
             arg = args[0];
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e){
             Scanner equation = new Scanner(System.in);
             System.out.println("Please enter your equation:");
             arg = equation.nextLine();
