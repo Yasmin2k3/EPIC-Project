@@ -24,13 +24,4 @@ class ParseArgsTest {
         Parser parser = new Parser();
         assertThrows(InvalidExpressionException.class, () -> parser.parse(input));
     }
-
-    @Test
-    void testInvalidExpression2() {
-        String input = "12 / (2 + 1 )";
-        List<String> expected = Arrays.asList("(", "12", "^", "2", "+", "1", "^");
-        Parser parser = new Parser();
-        List<String> actual = parser.parse(input);
-        assertEquals(expected, actual);
-    }
 }
