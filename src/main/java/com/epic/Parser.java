@@ -6,42 +6,42 @@ import java.util.List;
 
 public class Parser
 {
-    HashSet<Character> arithmeticOperators = new HashSet<>(Arrays.asList('+', '-', '*', '/'));
+    HashSet<Character> arithmeticOperators = new HashSet<>(Arrays.asList('+', '-', '*', '/', '^'));
 
     public List<String> parse(String input) throws InvalidExpressionError
     {
-        ExpressionParser tokenizer = new ExpressionParser(input);
-        while (tokenizer.hasNext())
+        Expression expression = new Expression(input);
+        while (expression.hasNext())
         {
             if (
-                    tokenizer.cur() == '(' ||
-                    tokenizer.cur() == ')')
+                    expression.cur() == '(' ||
+                    expression.cur() == ')')
             {
-                tokenizer.consume();
+                expression.consume();
             }
             else if (
-                !tokenizer.isValidSequence()
+                !expression.isValidSequence()
             ) {
                 throw new InvalidExpressionError("Invalid expression: " + input);
             }
             else if (
-                    Character.isDigit(tokenizer.cur()) ||
-                    (tokenizer.cur() == '-' && arithmeticOperators.contains(tokenizer.prev()))
+                    Character.isDigit(expression.cur()) ||
+                    (expression.cur() == '-' && arithmeticOperators.contains(expression.prev()))
             ) {
-                tokenizer.consumeNumber();
+                expression.consumeNumber();
             }
             else if (
-                    arithmeticOperators.contains(tokenizer.cur())
+                    arithmeticOperators.contains(expression.cur())
             ) {
-                tokenizer.consume();
+                expression.consume();
             }
             else
             {
-                tokenizer.consume();
+                System.out.println("Couldnt parse expression: " + expression.cur());
             }
         }
 
-        return tokenizer.getItems();
+        return expression.getItems();
     }
 }
 

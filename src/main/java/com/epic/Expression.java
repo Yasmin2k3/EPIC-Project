@@ -3,13 +3,13 @@ package com.epic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpressionParser
+public class Expression
 {
     private List<String> items = new ArrayList<>();
     private final String input;
     private int pos = 0; // index of the current position
 
-    public ExpressionParser(String input)
+    public Expression(String input)
     {
         this.input = input.replaceAll("\\s+", "");
     }
